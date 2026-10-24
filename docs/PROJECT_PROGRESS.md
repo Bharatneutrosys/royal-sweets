@@ -7,7 +7,7 @@
 | 1   | Project architecture | Complete | Next.js App Router foundation, configuration, and documentation. |
 | 2   | Design system        | Complete | Tasks 2.1–2.3 verified.                                          |
 | 3   | Global layout        | Complete | Tasks 3.1–3.4 verified in code; visual review remains.           |
-| 4   | Homepage             | Active   | Task 4.1 hero complete; later homepage sections pending.         |
+| 4   | Homepage             | Active   | Tasks 4.1 and 4.2 complete; later homepage sections pending.     |
 | 5   | Product data         | Pending  | Await verified menu information.                                 |
 | 6   | Menu pages           | Pending  |                                                                  |
 | 7   | Product details      | Pending  |                                                                  |
@@ -50,11 +50,13 @@ Task 3.4 reviewed route landmarks, desktop and mobile navigation, footer data an
 ## Stage 4 tasks
 
 - Task 4.1 — Luxury homepage hero and visual storytelling: Complete.
-- Task 4.2 — Category showcase: Pending.
+- Task 4.2 — Category showcase: Complete.
 - Task 4.3 — Featured product grids: Pending.
 - Task 4.4 — Brand story and catering sections: Pending.
 
 Task 4.1 replaced the temporary homepage with a single editorial hero, two working CTA destinations, and one locally optimized, licensed Indian sweets photograph. It added editorial and ingredient standards without publishing item prices, unconfirmed recipes, or a product catalog. No new runtime dependency was installed.
+
+Task 4.2 added six linked, image-rich category cards directly beneath the hero. Their routes and order derive from shared navigation data; editorial copy and six locally optimized illustrative photos have separate source records. Existing menu category pages remain placeholders. No product listings, prices, new dependencies, or client-side interactions were added.
 
 ## Unresolved decisions
 
@@ -64,6 +66,7 @@ Task 4.1 replaced the temporary homepage with a single editorial hero, two worki
 - Supply an approved favicon or brand mark; the existing `/favicon.ico` request returns 404.
 - Create legal pages only when approved policy text is available.
 - Obtain approved Royal Sweets photography when available; the current hero image is illustrative stock photography.
+- Obtain owner-approved category photography when available. The mango drink stock photo is not verified as lassi, and the general savory mix photo does not verify a Royal Sweets hot-mix product or inventory.
 - Reconfirm current menu prices and clarify “Julie” before publishing product data. The ordering page returned HTTP 403 to terminal requests during Task 4.1.
 
 ## Verification
@@ -133,4 +136,12 @@ Task 4.1 replaced the temporary homepage with a single editorial hero, two worki
 - Static production HTML contains one main landmark, one H1, the supplied hero copy, both CTA destinations, an optimized image preload, one global header, and one global footer.
 - The local WebP is 1200 × 1800 and 273,602 bytes; its aspect-ratio frame, static Next.js Image import, responsive `sizes`, blur placeholder, and priority loading were checked in source and build output.
 - The Unsplash photo page and license were checked through terminal HTTP. The ordering page returned HTTP 403, so live menu and prices could not be independently verified. No ordering-platform image was copied.
+- Browser and visual verification: Pending Manual User Verification. No browser, localhost, screenshot, or automated visual test was used.
+
+### Task 4.2 verification
+
+- `npm.cmd run typecheck`, `npm.cmd run lint`, `npm.cmd run format:check`, and `npm.cmd run build`: passed.
+- The production homepage HTML contains one header, one main, one footer, one H1, the category section heading, six category destinations, and six valid local category image references. All six category routes generated static HTML.
+- Generated category images use lazy loading. Source inspection confirmed 4:5 reserved image frames, responsive `sizes`, focus treatment, reduced-motion handling, and no nested interactive controls.
+- Unsplash search metadata identified all six creators and marked the photos free rather than Premium or Unsplash+. The license was checked via terminal HTTP, and the food subjects were inspected from local images. No ordering-platform images were copied.
 - Browser and visual verification: Pending Manual User Verification. No browser, localhost, screenshot, or automated visual test was used.

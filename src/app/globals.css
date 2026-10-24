@@ -200,6 +200,24 @@ button:not(:disabled) {
     animation: hero-enter var(--duration-slow) var(--ease-standard) both;
   }
 
+  .category-link .media-frame img {
+    transition: transform var(--duration-slow) var(--ease-standard);
+  }
+
+  .category-link:hover .media-frame img,
+  .category-link:focus-visible .media-frame img {
+    transform: scale(1.035);
+  }
+
+  .category-action svg {
+    transition: transform var(--duration-standard) var(--ease-standard);
+  }
+
+  .category-link:hover .category-action svg,
+  .category-link:focus-visible .category-action svg {
+    transform: translate(0.2rem, -0.2rem);
+  }
+
   .hero-visual-enter {
     animation: hero-enter var(--duration-slow) var(--ease-standard) 100ms both;
   }
@@ -265,6 +283,13 @@ button:not(:disabled) {
 
   .ui-button:active:not(:disabled),
   .interactive-surface:hover {
+    transform: none;
+  }
+
+  .category-link:hover .media-frame img,
+  .category-link:focus-visible .media-frame img,
+  .category-link:hover .category-action svg,
+  .category-link:focus-visible .category-action svg {
     transform: none;
   }
 }

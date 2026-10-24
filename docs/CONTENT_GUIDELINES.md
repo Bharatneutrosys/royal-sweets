@@ -35,3 +35,5 @@ Until confirmed, mark ingredients and allergens as pending internally. Do not cl
 ## Photography
 
 Use restaurant-owned imagery only with permission, or licensed stock imagery with recorded source and license. Label stock photography as illustrative and do not imply it depicts Royal Sweets products. The current hero image is recorded in [IMAGE_SOURCES.md](IMAGE_SOURCES.md). Replace it with approved restaurant photography when available, preserving meaningful alt text and local optimization.
+
+The six Task 4.2 category images are also illustrative. The beverage photo depicts a mango drink but is not verified as lassi; the savory mix is a general snack-mix photo and does not establish any Royal Sweets hot-mix product. Category text describes broad cuisines, not specific in-house preparations or availability. Confirm hot-mix inventory and obtain approved restaurant photography before using product-specific claims.

@@ -73,3 +73,10 @@
 - Use one free, non-premium Unsplash photograph of assorted Indian sweets. The source page and license were checked through terminal HTTP, and the image was inspected locally. Store an optimized WebP copy, identify it as illustrative, and credit the creator; do not present it as restaurant photography.
 - Keep the image in a reserved aspect-ratio frame and use static Next.js `Image` metadata, responsive sizes, priority, and a blur placeholder. Use CSS motion tokens for a restrained entrance and honor reduced-motion preferences.
 - Do not publish menu prices or recipe-specific details in the hero. The ordering platform returned HTTP 403 to terminal requests, so the user-provided list remains an editorial reference pending later reconfirmation. Record description, ingredient, and allergen standards separately from product implementation.
+
+## Task 4.2
+
+- Derive homepage categories from the existing shared menu route list and keep section-specific copy and imagery in `homeCategories.ts`. This prevents route drift between header, mobile menu, footer, and homepage.
+- Use one linked card per category with a noninteractive surface inside it. Keep the section server rendered, use the existing 4:5 `MediaFrame`, and avoid a carousel or animation dependency.
+- Use six locally optimized, free non-Premium Unsplash photographs as illustrative category imagery. Source metadata and license were checked through terminal requests, and subjects were inspected locally. The mango beverage photograph is not verified as lassi; the savory mix is not verified as Royal Sweets hot mix. Alt text describes what is visible.
+- Keep existing category routes as placeholders and refrain from publishing product listings or hot-mix inventory. Owner-approved restaurant photography can replace stock files later without changing routes or card structure.

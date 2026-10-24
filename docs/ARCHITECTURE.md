@@ -95,6 +95,14 @@ The root layout owns one header and footer, while each route owns one `<main id=
 
 Build-time checks cover route generation and generated HTML structure. Source review covers 320px through 1440px using the existing fluid gutter, `md` footer grid, and `lg` navigation boundary. Actual appearance, pointer behavior, and assistive technology behavior still require manual user verification without browser automation. The copyright year on static pages changes when the site is rebuilt.
 
+## Homepage category showcase
+
+`src/app/page.tsx` renders `CategoryShowcase` directly after `HeroSection`. The server component reuses `Section`, `Container`, `SectionHeading`, `Card`, and `MediaFrame`. Each card is one Next.js `Link` containing presentation-only content, an H3, and meaningful image alt text. No client state or new package is required.
+
+`src/lib/homeCategories.ts` holds homepage editorial copy and image references. It derives six slugs, paths, labels, and display order from `menuCategories` in `siteNavigation.ts`, avoiding a duplicate route list. “Savory Snacks” is a homepage display title for `/menu/snacks`. The category routes remain `noindex` placeholders until menu work.
+
+The grid has one column by default, two at `md`, and three at `lg`. Each photo uses a reserved 4:5 frame, Next.js Image responsive `sizes`, and default lazy loading below the hero. A section note identifies stock imagery as illustrative. Hover and focus treatments use existing motion tokens; reduced-motion settings remove movement. Sources and licensing are recorded in `IMAGE_SOURCES.md`. Actual hot-mix inventory remains unconfirmed.
+
 ## Homepage hero
 
 `src/app/page.tsx` contains one route-owned `<main>` and renders the server-compatible `HeroSection` from `src/components/home/`. The hero keeps its copy, CTA links, and illustration in one focused component. It uses the shared `Container` and `ButtonLink` controls, the existing semantic color and typography tokens, and `orderingUrl` from `business.ts`. Later homepage sections can follow it without changing the global layout.
