@@ -3,7 +3,7 @@ import { DesktopNavigation } from "@/components/layout/DesktopNavigation";
 import { MobileNavigation } from "@/components/layout/MobileNavigation";
 import { Container } from "@/components/shared/Container";
 import { ButtonLink } from "@/components/ui/Button";
-import { orderingUrl } from "@/lib/siteNavigation";
+import { orderingUrl } from "@/lib/business";
 
 export function SiteHeader() {
   return (

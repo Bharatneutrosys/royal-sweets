@@ -51,3 +51,11 @@
 - Keep Menu as a direct link and use a neighboring button for category expansion. This preserves the landing page and avoids nested interactive elements. Draw both link sets and the external ordering URL from the shared navigation module.
 - Let the navigation area scroll within the dialog while the ordering action stays at the bottom. Lock body scrolling only while the drawer is open, then restore its previous inline overflow value.
 - Use the existing motion tokens for a short CSS entrance and rely on the global reduced-motion rule. Browser visual and interaction review remains with the user for this task.
+
+## Task 3.3
+
+- Reuse `BrandLogo` with an inverse variant for the burgundy footer, keeping one brand implementation and only decorative gold accents. Footer links use ivory text and an ivory focus outline for contrast.
+- Keep the footer server rendered and in normal document flow. A flex body and content wrapper let existing route `<main>` elements fill short pages without adding another main landmark.
+- Derive Explore and Information links from the shared navigation configuration. Put the supplied contact and ordering details in `business.ts` so the header and footer share one source.
+- Treat hours as unconfirmed until the owner provides a schedule; show a phone link for current hours. Keep typed social links empty and hide their section until official URLs are verified.
+- Build the directions URL from the supplied postal address. Do not add unimplemented legal links or contact channels. Calculate the copyright year at render/build time without adding client JavaScript.

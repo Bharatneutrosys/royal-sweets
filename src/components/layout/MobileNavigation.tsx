@@ -5,11 +5,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { ButtonLink } from "@/components/ui/Button";
+import { orderingUrl } from "@/lib/business";
 import { classNames } from "@/lib/classNames";
 import {
   isNavigationActive,
   menuCategories,
-  orderingUrl,
   siteLinks,
 } from "@/lib/siteNavigation";
 

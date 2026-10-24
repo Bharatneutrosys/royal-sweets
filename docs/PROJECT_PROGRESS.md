@@ -6,7 +6,7 @@
 | --- | -------------------- | -------- | ---------------------------------------------------------------- |
 | 1   | Project architecture | Complete | Next.js App Router foundation, configuration, and documentation. |
 | 2   | Design system        | Complete | Tasks 2.1–2.3 verified.                                          |
-| 3   | Global layout        | Active   | Tasks 3.1–3.2 complete; Task 3.3 and footer remain.              |
+| 3   | Global layout        | Complete | Tasks 3.1–3.3 built; visual review remains with the user.        |
 | 4   | Homepage             | Pending  | Temporary starter page only.                                     |
 | 5   | Product data         | Pending  | Await verified menu information.                                 |
 | 6   | Menu pages           | Pending  |                                                                  |
@@ -36,19 +36,21 @@
 
 - Task 3.1 — Premium header and desktop navigation: Complete.
 - Task 3.2 — Full mobile navigation: Complete.
-- Task 3.3 — Next global layout task: Pending.
-- Later global layout work, including the footer: Pending.
+- Task 3.3 — Premium footer and global layout: Complete.
 
 Task 3.1 added a shared sticky header, text-based brand link, desktop navigation with an accessible Menu disclosure, a mobile link-row fallback, and the supplied external ordering link. Menu, catering, about, and contact routes are intentionally minimal `noindex` placeholders. No menu products or unverified business information were added.
 
 Task 3.2 replaced the temporary mobile link row with a modal drawer, an expandable category list, and a persistent drawer ordering action. The desktop header, routes, and temporary page content remain intact. No new dependency was installed.
 
+Task 3.3 added a responsive four-group footer and flex page flow. The footer uses supplied address and phone information, shared internal routes, and the existing ordering destination. Hours remain unconfirmed and social links remain hidden. No legal pages or additional dependencies were added.
+
 ## Unresolved decisions
 
-- Confirm menu content, prices, imagery, and business details before using them.
+- Confirm menu content, prices, imagery, business hours, and official social URLs before using them.
 - Decide ordering integration and cart behavior in their respective stages.
 - Confirm approved brand assets before future marketing pages.
 - Supply an approved favicon or brand mark; the existing `/favicon.ico` request returns 404.
+- Create legal pages only when approved policy text is available.
 
 ## Verification
 
@@ -94,3 +96,11 @@ Task 3.2 replaced the temporary mobile link row with a modal drawer, an expandab
 - Production build retained the homepage, business placeholders, menu landing page, and six generated category paths.
 - Code review confirmed native modal focus containment, Escape and backdrop dismissal, scroll-lock cleanup, desktop-breakpoint dismissal, separate Menu link and expansion button, and hidden collapsed categories.
 - Browser and visual verification: Pending Manual User Verification. No browser or screenshot testing was performed for this task.
+
+### Task 3.3 verification
+
+- `npm.cmd run typecheck`, `npm.cmd run lint`, `npm.cmd run format:check`, and `npm.cmd run build`: passed.
+- The production build generated the existing homepage, business placeholders, menu landing page, and six category paths.
+- Code review confirmed one footer in the root layout, four responsive groups, internal and external link semantics, a directions link derived from the supplied address, clickable phone links, hidden unconfigured social links, and no extra main landmark.
+- Static generated homepage HTML contained one `<main>`, one `<footer>`, the supplied address and phone link, a Maps directions URL, and “Call for current hours”; no social section was rendered.
+- Browser and visual verification: Pending Manual User Verification. No browser, localhost page, or screenshot testing was performed for this task.

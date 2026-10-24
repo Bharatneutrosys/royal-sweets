@@ -134,6 +134,10 @@ button:not(:disabled) {
   outline-offset: 3px;
 }
 
+.site-footer :focus-visible {
+  outline-color: var(--color-on-primary);
+}
+
 @layer components {
   .ui-button {
     transition-property: background-color, border-color, color, transform;
@@ -152,6 +156,10 @@ button:not(:disabled) {
 
   .section-space {
     padding-block: var(--section-space);
+  }
+
+  .site-content > main {
+    flex: 1;
   }
 
   .surface-panel {

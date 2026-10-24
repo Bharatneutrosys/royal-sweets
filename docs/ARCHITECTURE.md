@@ -6,8 +6,9 @@
 - `src/app/globals.css`: Tailwind import, design tokens, and accessibility defaults.
 - `src/components/ui/`: reusable visual controls and surfaces.
 - `src/components/shared/`: layout primitives for future pages.
-- `src/components/layout/`: global customer-facing header and navigation.
+- `src/components/layout/`: global customer-facing header, navigation, and footer.
 - `src/lib/classNames.ts`: minimal conditional class joining without a styling dependency.
+- `src/lib/business.ts`: supplied business identity, address, phone, ordering URL, and unconfirmed hours/social configuration.
 - `src/lib/siteNavigation.ts`: shared navigation destinations, menu category paths, and active-link matching.
 - `public/`: static assets when approved images are available.
 - `docs/`: architecture, progress, and decision log.
@@ -16,7 +17,6 @@
 
 Create directories when their first implementation is added:
 
-- Further `src/components/layout/` modules: footer when its task begins.
 - `src/components/home/`: homepage sections.
 - `src/components/menu/` and `src/components/products/`: menu browsing and product presentation.
 - `src/components/cart/`: shopping cart interface.
@@ -76,6 +76,14 @@ Below Tailwind's `lg` breakpoint (1024px), `MobileNavigation` replaces the deskt
 
 The mobile drawer is a native modal `<dialog>` in the browser top layer, above the sticky header's `z-40`; it does not require another z-index scale or a focus-trap dependency. Native modal behavior contains focus and makes the page behind it inert. The trigger uses `aria-expanded` and `aria-controls`; the dialog has a labeled heading and close button. Close, Escape, backdrop click, destination selection, and crossing into the desktop breakpoint dismiss it. Dismissal restores trigger focus when appropriate; resizing to desktop moves focus to the brand link instead of the now-hidden trigger. Body overflow is locked only while open and restored by effect cleanup. The navigation region scrolls independently so its footer action remains visible. CSS uses the existing duration and easing tokens for a restrained entrance; global reduced-motion rules disable it.
 
-The mobile Menu row retains a direct `/menu` link beside a separate button with `aria-expanded` and `aria-controls`. The nested category list comes from `menuCategories` in `siteNavigation.ts`; it is hidden and unfocusable while collapsed. `siteLinks` also drives desktop and mobile primary navigation, and `orderingUrl` is shared by both ordering actions. No category content or ordering flow was added.
+The mobile Menu row retains a direct `/menu` link beside a separate button with `aria-expanded` and `aria-controls`. The nested category list comes from `menuCategories` in `siteNavigation.ts`; it is hidden and unfocusable while collapsed. `siteLinks` also drives desktop and mobile primary navigation, and the ordering URL in `business.ts` is shared by both ordering actions. No category content or ordering flow was added.
 
 `src/app/menu/page.tsx`, `src/app/menu/[category]/page.tsx`, `src/app/catering/page.tsx`, `src/app/about/page.tsx`, and `src/app/contact/page.tsx` are temporary branded placeholders. The menu slugs and labels are defined once in `siteNavigation.ts`. Placeholder metadata is `noindex`; no product or business claims are supplied. Stage 6 and later business tasks will replace these routes with verified content.
+
+## Global footer and page flow
+
+`src/app/layout.tsx` places one `SiteFooter` after route content. The body and content wrapper use a vertical flex layout so each route's existing `<main>` fills short pages and long pages scroll naturally. The wrapper does not add a second main landmark. The header remains sticky; the footer stays in normal flow.
+
+`SiteFooter` is a server component with four groups: brand, Explore, Information, and Visit & Contact. The brand reuses `BrandLogo` in its inverse color variant. Explore and Information derive internal destinations from `siteNavigation.ts`; no second route list is maintained. Links use the existing CSS focus treatment, with an ivory focus outline on the burgundy footer. The grid moves from one column to two at `md` and four at `lg`.
+
+`src/lib/business.ts` is the source for the supplied name, description, address, phone, ordering link, and derived Google Maps directions URL. Its `BusinessHours` type supports a future confirmed schedule; the current `unconfirmed` value shows “Call for current hours” with a phone link. Obtain owner confirmation before publishing hours because restaurant and ordering-platform hours can differ. `socialLinks` accepts Facebook, Instagram, and Google Business Profile URLs but is empty; the social section is omitted until official URLs are supplied. Legal pages and links remain pending. The copyright year is read from `Date` during rendering and updates when the static site is rebuilt.

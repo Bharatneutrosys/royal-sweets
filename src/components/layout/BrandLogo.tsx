@@ -1,19 +1,31 @@
 import Link from "next/link";
+import { business } from "@/lib/business";
+import { classNames } from "@/lib/classNames";
 
-export function BrandLogo() {
+export function BrandLogo({ inverse = false }: { inverse?: boolean }) {
   return (
     <Link
-      id="site-brand-link"
+      id={inverse ? undefined : "site-brand-link"}
       href="/"
-      aria-label="Royal Sweets & Fast Food, home"
+      aria-label={`${business.name}, home`}
       className="inline-flex min-w-0 items-center gap-2 no-underline sm:gap-3"
     >
       <span aria-hidden="true" className="h-10 w-px shrink-0 bg-antique-gold" />
       <span className="flex min-w-0 flex-col">
-        <span className="font-display text-lg leading-none font-semibold whitespace-nowrap text-primary sm:text-xl lg:text-2xl">
+        <span
+          className={classNames(
+            "font-display text-lg leading-none font-semibold whitespace-nowrap sm:text-xl lg:text-2xl",
+            inverse ? "text-on-primary" : "text-primary",
+          )}
+        >
           Royal Sweets
         </span>
-        <span className="mt-1 font-body text-[0.625rem] leading-none font-bold tracking-[0.2em] whitespace-nowrap text-primary uppercase">
+        <span
+          className={classNames(
+            "mt-1 font-body text-[0.625rem] leading-none font-bold tracking-[0.2em] whitespace-nowrap uppercase",
+            inverse ? "text-on-primary" : "text-primary",
+          )}
+        >
           &amp; Fast Food
         </span>
       </span>
