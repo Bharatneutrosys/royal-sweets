@@ -6,7 +6,9 @@
 - `src/app/globals.css`: Tailwind import, design tokens, and accessibility defaults.
 - `src/components/ui/`: reusable visual controls and surfaces.
 - `src/components/shared/`: layout primitives for future pages.
+- `src/components/layout/`: global customer-facing header and navigation.
 - `src/lib/classNames.ts`: minimal conditional class joining without a styling dependency.
+- `src/lib/siteNavigation.ts`: shared navigation destinations, menu category paths, and active-link matching.
 - `public/`: static assets when approved images are available.
 - `docs/`: architecture, progress, and decision log.
 
@@ -14,7 +16,7 @@
 
 Create directories when their first implementation is added:
 
-- `src/components/layout/`: site header, footer, and page shell.
+- Further `src/components/layout/` modules: mobile drawer and footer when their tasks begin.
 - `src/components/home/`: homepage sections.
 - `src/components/menu/` and `src/components/products/`: menu browsing and product presentation.
 - `src/components/cart/`: shopping cart interface.
@@ -63,3 +65,13 @@ Import components directly from `src/components/ui/` or `src/components/shared/`
 Use Lucide React icons at 14–18px with a 1.75 stroke for these compact interfaces. Icons beside visible text are decorative and hidden from screen readers. Do not nest buttons inside links or links inside buttons. Use `aria-label` if a future icon-only control has no visible text.
 
 The showcase lives at `/ui-preview` in development. In production, that route returns 404 and is marked `noindex`. Run `npm.cmd run dev`, then visit `http://localhost:3000/ui-preview` to inspect components. The customer-facing starter page remains at `/`.
+
+## Global header and navigation
+
+`src/app/layout.tsx` renders one `SiteHeader` before route content and provides a skip link to each page's `#main-content`. The header stays in document flow with CSS `sticky`, an ivory surface, a fine border, and a restrained stacking level. `BrandLogo` is a text link so an approved logo asset can replace its contents later.
+
+`DesktopNavigation` highlights the current route and supplies Home, Menu, Catering, About Us, and Contact links. `MenuDropdown` uses a native `details`/`summary` disclosure containing ordinary links, with Escape, outside-pointer, and route-change closing. It keeps native keyboard link behavior rather than claiming ARIA menu behavior. A small client boundary handles current-route and disclosure state; the rest of the header remains server rendered. The external Order Online `ButtonLink` opens the owner-provided ordering URL in a new tab with `noopener noreferrer`.
+
+At smaller widths, `MobileNavigation` presents the same five destinations in a horizontally scrollable row, while the brand and ordering link remain available. This is a usable interim layout; Task 3.2 will design the full mobile navigation experience. Focus remains visible, and motion uses existing CSS tokens and reduced-motion rules.
+
+`src/app/menu/page.tsx`, `src/app/menu/[category]/page.tsx`, `src/app/catering/page.tsx`, `src/app/about/page.tsx`, and `src/app/contact/page.tsx` are temporary branded placeholders. The menu slugs and labels are defined once in `siteNavigation.ts`. Placeholder metadata is `noindex`; no product or business claims are supplied. Stage 6 and later business tasks will replace these routes with verified content.

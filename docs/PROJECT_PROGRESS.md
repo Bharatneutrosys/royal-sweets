@@ -6,7 +6,7 @@
 | --- | -------------------- | -------- | ---------------------------------------------------------------- |
 | 1   | Project architecture | Complete | Next.js App Router foundation, configuration, and documentation. |
 | 2   | Design system        | Complete | Tasks 2.1–2.3 verified.                                          |
-| 3   | Global layout        | Pending  | Root document only; navigation and footer remain.                |
+| 3   | Global layout        | Active   | Task 3.1 header complete; mobile navigation and footer remain.   |
 | 4   | Homepage             | Pending  | Temporary starter page only.                                     |
 | 5   | Product data         | Pending  | Await verified menu information.                                 |
 | 6   | Menu pages           | Pending  |                                                                  |
@@ -31,6 +31,14 @@
 - Task 2.1 — Premium brand identity, typography, and design foundation: Complete.
 - Task 2.2 — Premium reusable UI component library: Complete.
 - Task 2.3 — Design system validation and refinement: Complete.
+
+## Stage 3 tasks
+
+- Task 3.1 — Premium header and desktop navigation: Complete.
+- Task 3.2 — Full mobile navigation: Pending.
+- Later global layout work, including the footer: Pending.
+
+Task 3.1 added a shared sticky header, text-based brand link, desktop navigation with an accessible Menu disclosure, a mobile link-row fallback, and the supplied external ordering link. Menu, catering, about, and contact routes are intentionally minimal `noindex` placeholders. No menu products or unverified business information were added.
 
 ## Unresolved decisions
 
@@ -68,3 +76,11 @@
 - Refined reduced-motion behavior, long badge wrapping, section description typing, loading icon visibility, and Tailwind base-layer defaults without changing the temporary homepage.
 - `npm.cmd run typecheck`, `npm.cmd run lint`, `npm.cmd run format:check`, and `npm.cmd run build`: passed.
 - Production smoke test: `/` returned 200 and `/ui-preview` returned 404 without preview content.
+
+### Task 3.1 verification
+
+- `npm.cmd run typecheck`: passed.
+- `npm.cmd run lint`: passed without errors.
+- `npm.cmd run build`: passed; Next.js generated `/`, `/about`, `/catering`, `/contact`, `/menu`, and all six menu category paths.
+- `git diff --check`: passed. Code review confirmed one global header, semantic navigation links, a keyboard-operable native disclosure with Escape handling, a skip link, and responsive mobile access.
+- Browser and visual verification: Pending Manual User Verification, as requested for this task. No browser, screenshot, or localhost inspection was performed.

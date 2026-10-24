@@ -1,6 +1,9 @@
 export default function HomePage() {
   return (
-    <main className="flex min-h-dvh items-center bg-background py-20">
+    <main
+      id="main-content"
+      className="flex min-h-dvh items-center bg-background py-20"
+    >
       <div className="page-container">
         <div className="mx-auto max-w-4xl border-y border-border py-16 text-center sm:py-24">
           <span

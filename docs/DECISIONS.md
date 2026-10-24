@@ -33,3 +33,12 @@
 - Keep `SectionHeading.description` plain text so its paragraph wrapper always remains valid HTML. Hide a loading button's trailing action icon while the spinner is shown.
 - Put heading and link defaults in Tailwind's base layer so future utility classes can override them without selector fights.
 - Leave the favicon open until an approved brand mark is available; adding an invented logo would be outside this refinement pass.
+
+## Task 3.1
+
+- Use a text-based `BrandLogo` link until an approved mark exists. Keep the global header in the root layout so customer-facing routes share one implementation.
+- Centralize the five primary links and seven menu destinations in `siteNavigation.ts`; use the same paths for active states, dropdown links, and temporary category routes.
+- Use native `details`/`summary` for the desktop Menu disclosure and normal links inside it. Escape, outside-pointer, and route-change closing enhance the native keyboard behavior without introducing a menu library or inappropriate ARIA menu roles.
+- Keep the sticky treatment CSS-only to avoid scroll listeners and layout shifts. Reuse established colors, spacing, motion, focus, and button styles.
+- Provide a scrollable mobile link row and visible ordering access until Task 3.2 supplies the complete mobile navigation. Do not show a nonfunctional menu icon.
+- Mark placeholder routes `noindex` and limit their content to a title and development notice. Use the supplied external ordering link rather than implying native checkout exists.
