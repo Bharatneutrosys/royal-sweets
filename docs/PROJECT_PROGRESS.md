@@ -6,7 +6,7 @@
 | --- | -------------------- | -------- | ---------------------------------------------------------------- |
 | 1   | Project architecture | Complete | Next.js App Router foundation, configuration, and documentation. |
 | 2   | Design system        | Complete | Tasks 2.1–2.3 verified.                                          |
-| 3   | Global layout        | Complete | Tasks 3.1–3.3 built; visual review remains with the user.        |
+| 3   | Global layout        | Complete | Tasks 3.1–3.4 verified in code; visual review remains.           |
 | 4   | Homepage             | Pending  | Temporary starter page only.                                     |
 | 5   | Product data         | Pending  | Await verified menu information.                                 |
 | 6   | Menu pages           | Pending  |                                                                  |
@@ -37,12 +37,15 @@
 - Task 3.1 — Premium header and desktop navigation: Complete.
 - Task 3.2 — Full mobile navigation: Complete.
 - Task 3.3 — Premium footer and global layout: Complete.
+- Task 3.4 — Global integration and quality review: Complete.
 
 Task 3.1 added a shared sticky header, text-based brand link, desktop navigation with an accessible Menu disclosure, a mobile link-row fallback, and the supplied external ordering link. Menu, catering, about, and contact routes are intentionally minimal `noindex` placeholders. No menu products or unverified business information were added.
 
 Task 3.2 replaced the temporary mobile link row with a modal drawer, an expandable category list, and a persistent drawer ordering action. The desktop header, routes, and temporary page content remain intact. No new dependency was installed.
 
 Task 3.3 added a responsive four-group footer and flex page flow. The footer uses supplied address and phone information, shared internal routes, and the existing ordering destination. Hours remain unconfirmed and social links remain hidden. No legal pages or additional dependencies were added.
+
+Task 3.4 reviewed route landmarks, desktop and mobile navigation, footer data and links, design tokens, breakpoints, focus, motion, and client effects. It made the skip destination focusable with a sticky-header offset, limited desktop dropdown listeners to its open state, closed that dropdown on mobile transition, and expanded the directions link's accessible name. No dependency or feature was added. Stage 4 remains pending.
 
 ## Unresolved decisions
 
@@ -104,3 +107,11 @@ Task 3.3 added a responsive four-group footer and flex page flow. The footer use
 - Code review confirmed one footer in the root layout, four responsive groups, internal and external link semantics, a directions link derived from the supplied address, clickable phone links, hidden unconfigured social links, and no extra main landmark.
 - Static generated homepage HTML contained one `<main>`, one `<footer>`, the supplied address and phone link, a Maps directions URL, and “Call for current hours”; no social section was rendered.
 - Browser and visual verification: Pending Manual User Verification. No browser, localhost page, or screenshot testing was performed for this task.
+
+### Task 3.4 verification
+
+- `npm.cmd run typecheck`, `npm.cmd run lint`, `npm.cmd run format:check`, and `npm.cmd run build`: passed.
+- All eleven customer routes from the shared navigation arrays generated static HTML. Each had exactly one header, one main landmark, one footer, a skip target, a phone link, and no `href="#"` link.
+- Calculated contrast against royal burgundy: ivory text 11.44:1; footer text at 85% opacity 8.67:1. Gold remains decorative.
+- Reviewed 320px, 375px, 430px, 768px, 1024px, 1280px, and 1440px breakpoint and width rules in source. No code-level fixed-width overflow was found; rendered appearance was not assessed.
+- Browser and visual verification: Pending Manual User Verification. Drawer interactions, keyboard focus, responsive appearance, and sticky positioning require the user's browser review.

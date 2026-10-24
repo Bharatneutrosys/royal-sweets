@@ -25,7 +25,7 @@ export function DesktopNavigation() {
             <li key={href}>
               <Link
                 href={href}
-                aria-current={active ? "page" : undefined}
+                aria-current={pathname === href ? "page" : undefined}
                 className={navigationItemClasses(active)}
               >
                 {label}

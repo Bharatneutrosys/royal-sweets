@@ -2,6 +2,7 @@ export default function HomePage() {
   return (
     <main
       id="main-content"
+      tabIndex={-1}
       className="flex min-h-dvh items-center bg-background py-20"
     >
       <div className="page-container">

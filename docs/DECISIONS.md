@@ -59,3 +59,10 @@
 - Derive Explore and Information links from the shared navigation configuration. Put the supplied contact and ordering details in `business.ts` so the header and footer share one source.
 - Treat hours as unconfirmed until the owner provides a schedule; show a phone link for current hours. Keep typed social links empty and hide their section until official URLs are verified.
 - Build the directions URL from the supplied postal address. Do not add unimplemented legal links or contact channels. Calculate the copyright year at render/build time without adding client JavaScript.
+
+## Task 3.4
+
+- Keep route-owned main landmarks and the single root header/footer. Add focusable skip targets and a responsive scroll offset so the sticky header does not cover the target.
+- Subscribe to desktop dropdown outside-pointer and breakpoint events only while its native disclosure is open. Close it on mobile transition so hidden state does not reopen unexpectedly. Keep the native mobile dialog and its existing focus and scroll handling.
+- Include the street address in the directions link's accessible name. Keep the supplied business information and shared route data as their existing sources of truth.
+- Use generated HTML and contrast calculations for non-browser integration checks. Leave visual, pointer, and assistive technology behavior for the user's manual review, as requested.

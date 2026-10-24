@@ -121,7 +121,7 @@ export function SiteFooter() {
                 href={mapsDirectionsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={`Get directions to ${business.name} (opens in a new tab)`}
+                aria-label={`Get directions to ${business.name}, ${business.address.street}, ${business.address.city}, ${business.address.state} ${business.address.postalCode} (opens in a new tab)`}
                 className="inline-flex min-h-11 items-start gap-3 rounded-control text-sm leading-relaxed text-on-primary/85 no-underline transition-colors duration-[var(--duration-fast)] hover:text-on-primary"
               >
                 <MapPin

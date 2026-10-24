@@ -27,7 +27,7 @@ export default function UiPreviewPage() {
   }
 
   return (
-    <main id="main-content">
+    <main id="main-content" tabIndex={-1}>
       <Section aria-labelledby="preview-heading">
         <Container narrow>
           <p className="font-body text-label font-semibold tracking-[0.18em] text-primary uppercase">

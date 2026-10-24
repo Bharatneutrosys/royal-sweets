@@ -134,6 +134,16 @@ button:not(:disabled) {
   outline-offset: 3px;
 }
 
+#main-content {
+  scroll-margin-top: 6rem;
+}
+
+@media (min-width: 64rem) {
+  #main-content {
+    scroll-margin-top: 7rem;
+  }
+}
+
 .site-footer :focus-visible {
   outline-color: var(--color-on-primary);
 }

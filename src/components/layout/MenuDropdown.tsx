@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, type KeyboardEvent } from "react";
+import { useEffect, useRef, useState, type KeyboardEvent } from "react";
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
 import { navigationItemClasses } from "@/components/layout/navigationStyles";
@@ -15,8 +15,12 @@ type MenuDropdownProps = {
 export function MenuDropdown({ active, pathname }: MenuDropdownProps) {
   const detailsRef = useRef<HTMLDetailsElement>(null);
   const summaryRef = useRef<HTMLElement>(null);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
+    if (!open) return;
+
+    const desktopQuery = window.matchMedia("(min-width: 1024px)");
     const closeOnOutsideClick = (event: PointerEvent) => {
       const details = detailsRef.current;
 
@@ -24,11 +28,19 @@ export function MenuDropdown({ active, pathname }: MenuDropdownProps) {
         details.open = false;
       }
     };
+    const closeAtMobile = () => {
+      if (!desktopQuery.matches && detailsRef.current) {
+        detailsRef.current.open = false;
+      }
+    };
 
     document.addEventListener("pointerdown", closeOnOutsideClick);
-    return () =>
+    desktopQuery.addEventListener("change", closeAtMobile);
+    return () => {
       document.removeEventListener("pointerdown", closeOnOutsideClick);
-  }, []);
+      desktopQuery.removeEventListener("change", closeAtMobile);
+    };
+  }, [open]);
 
   useEffect(() => {
     if (detailsRef.current) {
@@ -46,7 +58,12 @@ export function MenuDropdown({ active, pathname }: MenuDropdownProps) {
 
   return (
     <li className="relative">
-      <details ref={detailsRef} className="group" onKeyDown={handleKeyDown}>
+      <details
+        ref={detailsRef}
+        className="group"
+        onKeyDown={handleKeyDown}
+        onToggle={(event) => setOpen(event.currentTarget.open)}
+      >
         <summary
           ref={summaryRef}
           className={classNames(
