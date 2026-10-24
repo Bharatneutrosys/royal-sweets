@@ -1,5 +1,24 @@
 # Architecture
 
+## Current product architecture — consolidated Sprint 1
+
+This section supersedes the historical Stage 3–4 descriptions below where they mention placeholder menu routes, twelve standalone featured records, or customer-facing third-party ordering. The prior implementation history remains for context.
+
+- `src/lib/menuCategories.ts` holds six primary categories and eleven subcategories. `src/lib/menuCatalog.ts` holds the 47 published reference-menu products. `siteNavigation.ts` derives destinations from the category module so the client-side mobile drawer does not import the full product catalog. Header, mobile drawer, footer, homepage discovery, and menu routes share those category paths. Category `displayOrder` and `isActive` prepare future admin reordering and visibility. Hot Mix has no unverified products.
+- `src/types/menu.ts` defines relationally mappable categories, products, price options, stock status, homepage sections, promotions, and today's specials. Products have stable IDs, slug, parent category/subcategory IDs, optional images and detail copy, integer-cent price options, provenance, nullable verification timestamp, unknown stock state, publishing flags, order, and timestamps. Every imported price has `unit: null` and `quantity: null`; no direct website selling price is asserted.
+- `src/components/menu/MenuPageContent.tsx` renders `/menu` and the six existing `/menu/[category]` routes. Server-side URL query parameters `q` and `subcategory` drive name search and subcategory filtering. Category navigation and native GET search work without a client component. Cards use `MediaFrame` and Next.js Image for licensed local photos; items without an accurate image use the existing reserved-size branded fallback. The Hot Mix route displays a clear empty state. All pages distinguish external reference prices from unconfirmed direct prices and ask customers to call for availability.
+- The homepage renders the shortened heritage hero, compact category discovery, conditionally rendered specials/offers, and compact visit section. `src/lib/homeContent.ts` seeds ordered section visibility with no active specials/promotions, so no empty offer block appears. These seed arrays are migration inputs, not live admin controls.
+- `src/lib/business.ts` contains customer-facing address, phone, maps URL, and unconfirmed hours. The former ordering destination exists only as `menuReferenceUrl` in `menuCatalog.ts` for provenance; no customer action points there. `/admin/login` honestly reports that secure access is pending. `/cart` and `/checkout` are unlinked, `noindex` future route reservations without functional checkout.
+- `scripts/validate-menu.mjs` checks the complete supplied name/price mapping, 47 unique IDs, category totals, subcategory membership, unknown units/availability, search logic, and local image paths.
+
+### Sprint 2 migration path
+
+Use Supabase-compatible PostgreSQL tables for categories, products, price options, product images, homepage sections, specials, and promotions, preserving stable IDs and parent/category foreign keys. Version a seed migration from this catalog; retain source URL and nullable verification data. Use Supabase Auth or an equivalent maintained server-enforced identity provider, with an explicit administrator role checked in protected server components, mutations, and storage policies. Deny writes by default with row-level policies; never rely on client-only guards or a shared password. Store images in a private or controlled bucket with validated uploads, size/type limits, and server-verified authorization. Configure credentials through Vercel environment variables; keep service-role secrets server-only. Implement login/logout, protected dashboard, category and subcategory CRUD/reordering, product editing/archive/publishing, stock, price/unit options, uploads, homepage copy/images/visibility/order, and scheduled specials/promotions. Revalidate relevant public routes after writes. Order management follows native checkout.
+
+### Sprint 3 ordering boundary
+
+Later, add product variants and quantities, cart, fulfillment details, server-calculated totals, payment processor integration (for example Stripe), verified webhooks, idempotent order creation, customer confirmation, and admin order status. Never trust browser-submitted prices or collect raw card data. No current page presents an active cart or payment action.
+
 ## Current foundation
 
 - `src/app/`: App Router routes, root layout, metadata, and global styles.

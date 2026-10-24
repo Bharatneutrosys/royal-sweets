@@ -3,7 +3,6 @@ import { DesktopNavigation } from "@/components/layout/DesktopNavigation";
 import { MobileNavigation } from "@/components/layout/MobileNavigation";
 import { Container } from "@/components/shared/Container";
 import { ButtonLink } from "@/components/ui/Button";
-import { orderingUrl } from "@/lib/business";
 
 export function SiteHeader() {
   return (
@@ -14,15 +13,11 @@ export function SiteHeader() {
         <div className="flex items-center justify-end gap-2">
           <div className="hidden sm:block">
             <ButtonLink
-              href={orderingUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Order Online (opens in a new tab)"
-              prefetch={false}
+              href="/menu"
               size="sm"
               className="shrink-0 whitespace-nowrap"
             >
-              Order Online
+              Explore Menu
             </ButtonLink>
           </div>
           <MobileNavigation />

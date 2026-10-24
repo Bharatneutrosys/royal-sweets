@@ -13,13 +13,13 @@ export function CategoryShowcase() {
       <Container>
         <SectionHeading
           id="categories-heading"
-          eyebrow="Discover Our Specialties"
-          title="Something Delicious for Every Craving"
-          description="From traditional mithai to flavorful street food, discover the favorites that bring everyone together."
-          className="mb-9 sm:mb-12"
+          eyebrow="Explore the menu"
+          title="Find Your Craving"
+          description="Browse the full menu by category."
+          className="mb-7"
         />
 
-        <div className="grid gap-[var(--grid-gap)] md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {homeCategories.map((category) => (
             <Link
               key={category.id}
@@ -31,31 +31,18 @@ export function CategoryShowcase() {
                 <MediaFrame
                   src={category.image}
                   alt={category.imageAlt}
-                  aspect="portrait"
+                  aspect="landscape"
                   sizes="(max-width: 767px) calc(100vw - 2.5rem), (max-width: 1023px) calc((100vw - 4rem) / 2), (max-width: 1440px) calc((100vw - 8rem) / 3), 420px"
                   className="rounded-none border-0"
                 />
-                <div className="flex min-h-64 flex-col p-6 sm:p-7">
-                  <span
-                    aria-hidden="true"
-                    className="mb-3 font-body text-caption font-semibold tracking-[0.16em] text-primary"
-                  >
-                    {String(category.displayOrder).padStart(2, "0")}
-                  </span>
+                <div className="flex items-center justify-between gap-3 p-4 sm:p-5">
                   <h3
                     id={`category-${category.id}`}
-                    className="font-display text-card font-semibold text-primary"
+                    className="font-display text-xl font-semibold text-primary"
                   >
                     {category.title}
                   </h3>
-                  <p className="mt-2 font-body text-sm font-semibold text-foreground">
-                    {category.subtitle}
-                  </p>
-                  <p className="mt-3 font-body text-supporting text-muted">
-                    {category.description}
-                  </p>
-                  <span className="category-action mt-auto inline-flex items-center gap-2 pt-5 font-body text-button font-bold text-primary">
-                    Explore category
+                  <span className="category-action inline-flex items-center gap-2 font-body text-button font-bold text-primary">
                     <ArrowUpRight
                       aria-hidden="true"
                       className="size-4"

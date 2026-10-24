@@ -5,7 +5,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { ButtonLink } from "@/components/ui/Button";
-import { orderingUrl } from "@/lib/business";
 import { classNames } from "@/lib/classNames";
 import {
   isNavigationActive,
@@ -231,15 +230,11 @@ export function MobileNavigation() {
 
           <div className="shrink-0 border-t border-border bg-background px-5 pt-4 pb-[max(1rem,env(safe-area-inset-bottom))]">
             <ButtonLink
-              href={orderingUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Order Online (opens in a new tab)"
-              prefetch={false}
+              href="/menu"
               fullWidth
               onClick={() => closeDrawer(false)}
             >
-              Order Online
+              Explore Menu
             </ButtonLink>
           </div>
         </div>

@@ -1,5 +1,9 @@
 # Image Sources
 
+## Menu catalog reuse (consolidated Sprint 1)
+
+No new image files were downloaded. The menu reuses previously licensed local product photos for Rasmalai, Jalebi, Gulab Jamun, Rasgulla, Gajar Halwa, Ladoo, Hot Samosa Chaat, Chole Bhature, Pav Bhaji, and Mango Lassi. It also reuses the documented category photos for Pani Puri, Samosa, and Masala Dosa. Existing source URLs, creators, licenses, and WebP processing remain recorded below. Menu cards show these as illustrative photography, never as verified Royal Sweets dishes. CC BY-SA 4.0 creator/source/license links appear in the menu page's photo credits disclosure. The remaining 34 products have a product-named branded fallback instead of an unlicensed or mismatched dish photo. “Julie” remains without an identified dish photograph.
+
 ## Hero: Indian sweets assortment
 
 | Field          | Record                                                                                                                                |

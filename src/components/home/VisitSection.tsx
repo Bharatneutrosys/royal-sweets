@@ -1,4 +1,4 @@
-import { Clock3, MapPin, Phone } from "lucide-react";
+import { MapPin, Phone } from "lucide-react";
 import { Container } from "@/components/shared/Container";
 import { Section } from "@/components/shared/Section";
 import { SectionHeading } from "@/components/shared/SectionHeading";
@@ -13,7 +13,7 @@ export function VisitSection() {
           <SectionHeading
             id="visit-heading"
             eyebrow="Visit Royal Sweets"
-            title="Your Next Stop for Something Delicious"
+            title="Visit Us in Richardson"
             description="Visit Royal Sweets & Fast Food on W Belt Line Road in Richardson, Texas."
           />
         </div>
@@ -56,38 +56,21 @@ export function VisitSection() {
                 {business.phone.display}
               </a>
             </div>
-            <div className="flex items-start gap-4">
-              <Clock3
-                aria-hidden="true"
-                className="mt-1 size-5 shrink-0 text-primary"
-                strokeWidth={1.75}
-              />
-              {business.hours.status === "confirmed" ? (
-                <dl className="space-y-1 font-body text-supporting text-muted">
-                  {business.hours.schedule.map(({ day, hours }) => (
-                    <div key={day} className="flex gap-3">
-                      <dt className="min-w-20">{day}</dt>
-                      <dd>{hours}</dd>
-                    </div>
-                  ))}
-                </dl>
-              ) : (
-                <p className="font-body text-supporting text-muted">
-                  Call for current hours
-                </p>
-              )}
-            </div>
           </address>
-          <ButtonLink
-            href={mapsDirectionsUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            prefetch={false}
-            aria-label={`Get directions to ${business.name} in Richardson (opens in a new tab)`}
-            className="mt-8 w-full sm:w-auto"
-          >
-            Get Directions
-          </ButtonLink>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <ButtonLink
+              href={mapsDirectionsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              prefetch={false}
+              aria-label={`Get directions to ${business.name} in Richardson (opens in a new tab)`}
+            >
+              Get Directions
+            </ButtonLink>
+            <ButtonLink href="/menu" variant="outline">
+              Explore Menu
+            </ButtonLink>
+          </div>
         </div>
       </Container>
     </Section>

@@ -1,5 +1,13 @@
 # Content Guidelines
 
+## Current menu publication policy — consolidated Sprint 1
+
+The 47 items and prices in `src/lib/menuCatalog.ts` are an owner-provided snapshot of an externally published ordering listing, received 2026-10-24. The provider URL is retained only for internal provenance. It is no longer a customer ordering destination. Direct HTTP access previously returned 403, so current listing prices were not independently reverified. All menu cards say **Reference menu price** and ask customers to call to confirm current price, unit, and availability. Direct website selling prices are not configured.
+
+Descriptions explain recognizable traditional dishes in general, not the restaurant's exact recipes. “Julie” has no description or dish-specific image pending owner identification. Product images already licensed in the project are illustrative; all others use a branded fallback. See `IMAGE_SOURCES.md` for creator, source, license, and local processing. Confirm actual photos, ingredients, allergens, portions, and stock before direct ordering. The owner-provided 25+ years and Richardson/DFW service-area statements may appear on the homepage; do not infer a founding year or unrelated business history.
+
+Older notes below describe the preceding homepage implementation and are superseded where they recommend sending customers to the provider or delaying the catalog.
+
 ## Editorial voice
 
 Write with warmth, clarity, and specific sensory detail. Keep product descriptions concise and culturally accurate. Use the restaurant's own spelling for item names until the owner approves a correction. Avoid unsupported superlatives, awards, origin stories, freshness guarantees, and dietary claims.

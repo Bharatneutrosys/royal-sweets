@@ -22,13 +22,9 @@ type BusinessConfig = {
     country: string;
   };
   phone: { display: string; href: string };
-  orderingUrl: string;
   hours: BusinessHours;
   socialLinks: readonly SocialLink[];
 };
-
-export const orderingUrl =
-  "https://order.online/store/royal-sweets-fast-food-west-belt-line-road-303445";
 
 export const business: BusinessConfig = {
   name: "Royal Sweets & Fast Food",
@@ -41,7 +37,6 @@ export const business: BusinessConfig = {
     country: "United States",
   },
   phone: { display: "(972) 669-4973", href: "tel:+19726694973" },
-  orderingUrl,
   hours: { status: "unconfirmed" },
   socialLinks: [],
 };

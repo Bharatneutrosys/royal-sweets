@@ -1,11 +1,17 @@
 import type { Metadata } from "next";
-import { PlaceholderPage } from "@/components/shared/PlaceholderPage";
+import { MenuPageContent } from "@/components/menu/MenuPageContent";
 
 export const metadata: Metadata = {
   title: "Menu | Royal Sweets & Fast Food",
-  robots: { index: false, follow: false },
+  description:
+    "Browse sweets, Indian food, chaat, snacks, and beverages at Royal Sweets & Fast Food in Richardson.",
 };
 
-export default function MenuPage() {
-  return <PlaceholderPage title="Menu" />;
+export default async function MenuPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ q?: string }>;
+}) {
+  const { q } = await searchParams;
+  return <MenuPageContent query={q} />;
 }

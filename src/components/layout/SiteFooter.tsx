@@ -92,15 +92,9 @@ export function SiteFooter() {
                 </li>
               ))}
               <li>
-                <a
-                  href={business.orderingUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Order Online (opens in a new tab)"
-                  className={footerLinkClasses}
-                >
-                  Order Online
-                </a>
+                <Link href="/menu" className={footerLinkClasses}>
+                  Explore Menu
+                </Link>
               </li>
             </ul>
           </nav>
@@ -176,6 +170,12 @@ export function SiteFooter() {
           <p>
             © {new Date().getFullYear()} {business.name}. All Rights Reserved.
           </p>
+          <Link
+            href="/admin/login"
+            className="mt-3 inline-flex min-h-11 items-center text-xs text-on-primary/80 underline-offset-4 hover:text-on-primary"
+          >
+            Admin
+          </Link>
         </div>
       </Container>
     </footer>

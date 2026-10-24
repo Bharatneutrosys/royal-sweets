@@ -1,5 +1,14 @@
 # Decisions
 
+## Priority reset, consolidated Sprint 1 (2026-10-24)
+
+- Replace the long Stage 4 homepage composition with the owner-supplied 25+ year heritage message, a compact category discovery, optional hidden specials/offers, and Richardson visit details. Preserve licensed assets and earlier components where useful; remove the duplicate twelve-item homepage seed rather than maintain two catalogs.
+- Treat the former ordering provider solely as an internal menu provenance source. The owner's 47-name/price snapshot is imported as integer cents, with verification time and unit unset. Terminal access to the source was previously blocked by HTTP 403. Label these as reference prices, avoid checkout claims, and confirm live direct prices, portions, stock, and ingredients with the restaurant before selling.
+- Keep one category source for menu, header, mobile, footer, and homepage routes. Use server-rendered URL-based search and subcategory filters, keeping browsing functional without extra client state or dependencies. Use existing licensed matching photos and branded fallbacks; stock imagery remains explicitly illustrative.
+- Reserve `/admin/login`, `/cart`, and `/checkout` without fake authentication, cart, or payment interfaces. Plan server-enforced administrator access, PostgreSQL persistence and storage first; add native ordering only after server-side pricing and payment design are ready. Keep empty specials and promotions hidden until real owner-managed data exists.
+
+The task-specific entries below record historical decisions; any references to customer redirects or placeholder menu pages have been superseded.
+
 ## Task 1.1
 
 - Use the Next.js App Router with strict TypeScript and a `src/` root for application code.

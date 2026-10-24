@@ -1,6 +1,7 @@
 import { menuCategories } from "@/lib/siteNavigation";
 
-type CategorySlug = Exclude<(typeof menuCategories)[number]["slug"], null>;
+type CategorySlug =
+  "sweets" | "indian-food" | "chaat" | "snacks" | "hot-mix" | "beverages";
 
 type CategoryEditorial = {
   title?: string;
@@ -13,6 +14,7 @@ type CategoryEditorial = {
 
 const categoryEditorial: Record<CategorySlug, CategoryEditorial> = {
   sweets: {
+    title: "Traditional Indian Sweets",
     subtitle: "A little sweetness, a lot of tradition.",
     description:
       "Explore timeless Indian favorites, from rich milk-based delicacies to syrup-soaked treats and festive mithai.",
@@ -43,6 +45,7 @@ const categoryEditorial: Record<CategorySlug, CategoryEditorial> = {
     imageAlt: "Illustrative namkeen mixture with sev and peanuts in a bowl",
   },
   "indian-food": {
+    title: "Indian Food & Dosas",
     subtitle: "Comfort food with authentic flavor.",
     description:
       "Explore Indian favorites, from crispy dosas and chole bhature to hearty traditional meals.",

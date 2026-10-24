@@ -1,5 +1,34 @@
 # Project Progress
 
+## Priority reset: consolidated delivery roadmap (2026-10-24)
+
+The earlier numbered stages below remain as a history of completed work. Their unfinished feature sequence is superseded by these four sprints. Stage 4's previous homepage was technically complete at the time; Sprint 1 replaces its long rendered composition with a shorter one. Do not infer that menu, admin, or ordering are complete from those historical entries.
+
+| Sprint | Priority  | Scope                                                                                                                                                                                                                    | Status                                                 |
+| ------ | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------ |
+| 1      | Immediate | Simplify homepage; remove customer-facing external ordering redirects; publish a complete 47-item reference menu with category/subcategory pages, descriptions, approved images or fallbacks, and admin-ready seed data. | Technically complete; manual visual acceptance pending |
+| 2      | Next      | Server-enforced admin authentication; persistent PostgreSQL data and storage; category/product CRUD, availability, prices/units, uploads, homepage sections, specials and scheduled promotions.                          | Pending                                                |
+| 3      | Future    | Native cart, quantity/weight variants, checkout, payments, order management, confirmations and status.                                                                                                                   | Pending                                                |
+| 4      | Final     | Security, accessibility, responsive QA, SEO, performance and production readiness.                                                                                                                                       | Pending                                                |
+
+The third-party ordering URL is retained solely as a provenance reference, not a customer destination. Sprint 1 prices are an owner-provided snapshot of an external listing; direct website prices, units, stock, ingredients, and live availability await confirmation. Browser-dependent visual acceptance remains with the owner.
+
+### Sprint 1 delivered
+
+- Replaced the long rendered homepage with a heritage hero, compact six-category discovery, conditional (currently hidden) specials/offers, and a compact Richardson visit block. Preserved the global header/footer and existing licensed imagery. The 25+ years and DFW copy came directly from the owner.
+- Removed all customer-facing provider ordering links and buttons. Header, mobile drawer, footer, and homepage actions now browse the internal menu. The former ordering URL remains only in menu provenance and historical docs.
+- Published 47 unique items from the owner-supplied snapshot in one typed seed, covering six primary categories and eleven subcategories. All six established menu category routes now render real content. Name search and subcategory filtering use URL queries. Hot Mix is visible with an honest empty state.
+- Added descriptions for identifiable traditional dishes, existing licensed illustrative photos for matching dishes, and reserved-size branded fallbacks elsewhere. “Julie” remains listed without an invented description or image. Prices are integer cents and labeled reference prices; all units and live availability remain unknown.
+- Added editable-shape models for categories, products, price options, homepage sections, specials, and promotions. Created a discreet `/admin/login` pending-setup page and unlinked `/cart` and `/checkout` coming-soon reservations. No authentication, mutation endpoint, database, cart, or payment flow exists.
+- `npm.cmd run validate:menu`: passed all 47 supplied name/price mappings, unique IDs, category counts, subcategory membership, search behavior, and image-path checks. `npm.cmd run typecheck`, `npm.cmd run lint`, `npm.cmd run format:check`, and `npm.cmd run build`: passed. Build emitted `/menu`, six category routes, `/admin/login`, `/cart`, and `/checkout`. No browser was used; visual verification is **Pending Manual User Verification**.
+
+### Next implementation priorities
+
+1. Owner confirmation of direct selling prices, units, stock, ingredients/allergens, Hot Mix inventory, “Julie” identity, and current business hours.
+2. Sprint 2: server-enforced admin login/logout and roles; PostgreSQL schema and migration; category/subcategory/product CRUD and reordering; price options, stock, archive/publish, image uploads; homepage copy/images/section visibility/order; scheduled specials/offers; production environment and storage configuration.
+3. Sprint 3: variant-aware cart, server-authoritative pricing, fulfillment details, secure payment, order records and status, confirmations, and admin order management.
+4. Sprint 4: security, accessibility, responsive manual QA, SEO, performance, and launch review. Owner must manually inspect 320px/mobile through desktop, search/filter links, image cropping, focus, and the Hot Mix empty state.
+
 ## Stages
 
 | #   | Stage                | Status   | Notes                                                            |
@@ -8,8 +37,8 @@
 | 2   | Design system        | Complete | Tasks 2.1–2.3 verified.                                          |
 | 3   | Global layout        | Complete | Tasks 3.1–3.4 verified in code; visual review remains.           |
 | 4   | Homepage             | Complete | Technical QA passed; manual visual acceptance remains pending.   |
-| 5   | Product data         | Pending  | Await verified menu information.                                 |
-| 6   | Menu pages           | Pending  |                                                                  |
+| 5   | Product data         | Seeded   | 47 reference items; direct prices and details remain unverified. |
+| 6   | Menu pages           | Complete | Browse/search/filter; manual visual review remains.              |
 | 7   | Product details      | Pending  |                                                                  |
 | 8   | Animations/mobile    | Pending  |                                                                  |
 | 9   | Cart                 | Pending  |                                                                  |
