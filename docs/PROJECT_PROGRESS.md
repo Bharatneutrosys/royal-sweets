@@ -7,7 +7,7 @@
 | 1   | Project architecture | Complete | Next.js App Router foundation, configuration, and documentation. |
 | 2   | Design system        | Complete | Tasks 2.1–2.3 verified.                                          |
 | 3   | Global layout        | Complete | Tasks 3.1–3.4 verified in code; visual review remains.           |
-| 4   | Homepage             | Pending  | Temporary starter page only.                                     |
+| 4   | Homepage             | Active   | Task 4.1 hero complete; later homepage sections pending.         |
 | 5   | Product data         | Pending  | Await verified menu information.                                 |
 | 6   | Menu pages           | Pending  |                                                                  |
 | 7   | Product details      | Pending  |                                                                  |
@@ -47,6 +47,15 @@ Task 3.3 added a responsive four-group footer and flex page flow. The footer use
 
 Task 3.4 reviewed route landmarks, desktop and mobile navigation, footer data and links, design tokens, breakpoints, focus, motion, and client effects. It made the skip destination focusable with a sticky-header offset, limited desktop dropdown listeners to its open state, closed that dropdown on mobile transition, and expanded the directions link's accessible name. No dependency or feature was added. Stage 4 remains pending.
 
+## Stage 4 tasks
+
+- Task 4.1 — Luxury homepage hero and visual storytelling: Complete.
+- Task 4.2 — Category showcase: Pending.
+- Task 4.3 — Featured product grids: Pending.
+- Task 4.4 — Brand story and catering sections: Pending.
+
+Task 4.1 replaced the temporary homepage with a single editorial hero, two working CTA destinations, and one locally optimized, licensed Indian sweets photograph. It added editorial and ingredient standards without publishing item prices, unconfirmed recipes, or a product catalog. No new runtime dependency was installed.
+
 ## Unresolved decisions
 
 - Confirm menu content, prices, imagery, business hours, and official social URLs before using them.
@@ -54,6 +63,8 @@ Task 3.4 reviewed route landmarks, desktop and mobile navigation, footer data an
 - Confirm approved brand assets before future marketing pages.
 - Supply an approved favicon or brand mark; the existing `/favicon.ico` request returns 404.
 - Create legal pages only when approved policy text is available.
+- Obtain approved Royal Sweets photography when available; the current hero image is illustrative stock photography.
+- Reconfirm current menu prices and clarify “Julie” before publishing product data. The ordering page returned HTTP 403 to terminal requests during Task 4.1.
 
 ## Verification
 
@@ -115,3 +126,11 @@ Task 3.4 reviewed route landmarks, desktop and mobile navigation, footer data an
 - Calculated contrast against royal burgundy: ivory text 11.44:1; footer text at 85% opacity 8.67:1. Gold remains decorative.
 - Reviewed 320px, 375px, 430px, 768px, 1024px, 1280px, and 1440px breakpoint and width rules in source. No code-level fixed-width overflow was found; rendered appearance was not assessed.
 - Browser and visual verification: Pending Manual User Verification. Drawer interactions, keyboard focus, responsive appearance, and sticky positioning require the user's browser review.
+
+### Task 4.1 verification
+
+- `npm.cmd run typecheck`, `npm.cmd run lint`, `npm.cmd run format:check`, and `npm.cmd run build`: passed.
+- Static production HTML contains one main landmark, one H1, the supplied hero copy, both CTA destinations, an optimized image preload, one global header, and one global footer.
+- The local WebP is 1200 × 1800 and 273,602 bytes; its aspect-ratio frame, static Next.js Image import, responsive `sizes`, blur placeholder, and priority loading were checked in source and build output.
+- The Unsplash photo page and license were checked through terminal HTTP. The ordering page returned HTTP 403, so live menu and prices could not be independently verified. No ordering-platform image was copied.
+- Browser and visual verification: Pending Manual User Verification. No browser, localhost, screenshot, or automated visual test was used.

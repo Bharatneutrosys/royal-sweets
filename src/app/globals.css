@@ -196,6 +196,14 @@ button:not(:disabled) {
     border-color: var(--color-primary);
   }
 
+  .hero-copy-enter {
+    animation: hero-enter var(--duration-slow) var(--ease-standard) both;
+  }
+
+  .hero-visual-enter {
+    animation: hero-enter var(--duration-slow) var(--ease-standard) 100ms both;
+  }
+
   .mobile-drawer {
     position: fixed;
     inset: 0 0 0 auto;
@@ -226,6 +234,13 @@ button:not(:disabled) {
 @keyframes drawer-enter {
   from {
     transform: translateX(100%);
+  }
+}
+
+@keyframes hero-enter {
+  from {
+    opacity: 0;
+    transform: translateY(0.75rem);
   }
 }
 

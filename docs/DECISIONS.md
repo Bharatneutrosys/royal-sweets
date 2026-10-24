@@ -66,3 +66,10 @@
 - Subscribe to desktop dropdown outside-pointer and breakpoint events only while its native disclosure is open. Close it on mobile transition so hidden state does not reopen unexpectedly. Keep the native mobile dialog and its existing focus and scroll handling.
 - Include the street address in the directions link's accessible name. Keep the supplied business information and shared route data as their existing sources of truth.
 - Use generated HTML and contrast calculations for non-browser integration checks. Leave visual, pointer, and assistive technology behavior for the user's manual review, as requested.
+
+## Task 4.1
+
+- Replace only the temporary homepage with one editorial hero, preserving the shared header, footer, and future route boundaries. Use the supplied headline and copy with a menu link and the existing external ordering URL.
+- Use one free, non-premium Unsplash photograph of assorted Indian sweets. The source page and license were checked through terminal HTTP, and the image was inspected locally. Store an optimized WebP copy, identify it as illustrative, and credit the creator; do not present it as restaurant photography.
+- Keep the image in a reserved aspect-ratio frame and use static Next.js `Image` metadata, responsive sizes, priority, and a blur placeholder. Use CSS motion tokens for a restrained entrance and honor reduced-motion preferences.
+- Do not publish menu prices or recipe-specific details in the hero. The ordering platform returned HTTP 403 to terminal requests, so the user-provided list remains an editorial reference pending later reconfirmation. Record description, ingredient, and allergen standards separately from product implementation.

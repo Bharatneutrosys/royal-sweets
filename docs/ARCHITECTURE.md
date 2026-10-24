@@ -7,23 +7,24 @@
 - `src/components/ui/`: reusable visual controls and surfaces.
 - `src/components/shared/`: layout primitives for future pages.
 - `src/components/layout/`: global customer-facing header, navigation, and footer.
+- `src/components/home/`: homepage hero and later approved sections.
 - `src/lib/classNames.ts`: minimal conditional class joining without a styling dependency.
 - `src/lib/business.ts`: supplied business identity, address, phone, ordering URL, and unconfirmed hours/social configuration.
 - `src/lib/siteNavigation.ts`: shared navigation destinations, menu category paths, and active-link matching.
-- `public/`: static assets when approved images are available.
+- `public/images/hero/`: locally optimized, licensed hero photography.
 - `docs/`: architecture, progress, and decision log.
 
 ## Planned organization
 
 Create directories when their first implementation is added:
 
-- `src/components/home/`: homepage sections.
+- Additional `src/components/home/` modules: future homepage sections.
 - `src/components/menu/` and `src/components/products/`: menu browsing and product presentation.
 - `src/components/cart/`: shopping cart interface.
 - `src/hooks/`: shared client hooks.
 - Additional `src/lib/` modules: shared integrations when needed.
 - `src/types/`: domain types and data models.
-- `public/images/`: locally hosted approved imagery.
+- Further `public/images/` directories: locally hosted approved imagery for later sections.
 
 Routes will live under `src/app/` as features are approved. Keep server components by default and add client boundaries only for interaction. Vercel can build the standard Next.js application without a custom adapter.
 
@@ -93,3 +94,11 @@ The mobile Menu row retains a direct `/menu` link beside a separate button with 
 The root layout owns one header and footer, while each route owns one `<main id="main-content" tabIndex={-1}>`. The skip link can focus that landmark, and its scroll margin leaves room for the sticky header at mobile and desktop sizes. The desktop Menu disclosure attaches its document pointer and breakpoint listeners only while open, removes them on close, and closes when switching to mobile. The mobile modal keeps native focus containment, body scroll cleanup, and breakpoint dismissal. All three navigation surfaces use the shared route arrays; ordering and contact details come from `business.ts`.
 
 Build-time checks cover route generation and generated HTML structure. Source review covers 320px through 1440px using the existing fluid gutter, `md` footer grid, and `lg` navigation boundary. Actual appearance, pointer behavior, and assistive technology behavior still require manual user verification without browser automation. The copyright year on static pages changes when the site is rebuilt.
+
+## Homepage hero
+
+`src/app/page.tsx` contains one route-owned `<main>` and renders the server-compatible `HeroSection` from `src/components/home/`. The hero keeps its copy, CTA links, and illustration in one focused component. It uses the shared `Container` and `ButtonLink` controls, the existing semantic color and typography tokens, and `orderingUrl` from `business.ts`. Later homepage sections can follow it without changing the global layout.
+
+The image is a locally stored, licensed stock photograph imported statically into Next.js `Image`. A fixed aspect-ratio frame reserves space, `sizes` selects responsive image widths, `priority` preloads the lead image, and the static import supplies a blur placeholder. The caption identifies the image as illustrative and credits the photographer; it makes no claim about Royal Sweets products. Source, license, and processing are recorded in `docs/IMAGE_SOURCES.md`.
+
+The section stacks copy and image on mobile and uses a balanced two-column composition at `lg`. A quiet sand field and gold frame accent the image without another color system. Short CSS entrance animations reuse motion tokens; global reduced-motion rules disable them. Product descriptions, prices, ingredients, and allergen standards are in `docs/CONTENT_GUIDELINES.md`. No catalog or product components are introduced in Task 4.1.
