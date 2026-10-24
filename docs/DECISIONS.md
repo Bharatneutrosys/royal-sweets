@@ -17,3 +17,11 @@
 - Retain the existing `next/font` configuration. Define the typography scale in CSS tokens so future pages can share responsive sizing without another font or dependency.
 - Set the content maximum to 1344px with fluid gutters and restrained borders, corners, shadows, and motion. This supports both editorial gifting pages and functional ordering pages.
 - Keep the current route as a brand demonstration only; Stage 4 will provide the finished homepage.
+
+## Task 2.2
+
+- Build small server-compatible React primitives instead of adding a UI framework. Only Lucide React is added for consistent, lightweight icons.
+- Share button styling between native action buttons and Next.js navigation links, while keeping their HTML semantics separate. Loading disables actions and exposes `aria-busy`.
+- Make cards composable presentation surfaces, not implicit click targets. Future features decide whether a card contains an actual link or action.
+- Require alt text for meaningful media through the `MediaFrame` TypeScript interface. Reserve aspect ratio before image loading to avoid layout shift.
+- Keep the component showcase development-only and return 404 in production rather than exposing an unfinished playground.

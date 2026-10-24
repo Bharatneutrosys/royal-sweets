@@ -103,14 +103,14 @@ p {
   text-wrap: pretty;
 }
 
-a {
+a:not(.button-link) {
   color: var(--color-primary);
   text-decoration-line: underline;
   text-underline-offset: 0.2em;
   transition: color var(--duration-fast) var(--ease-standard);
 }
 
-a:hover {
+a:not(.button-link):hover {
   color: var(--color-primary-hover);
 }
 
@@ -133,6 +133,16 @@ button:not(:disabled) {
 }
 
 @layer components {
+  .ui-button {
+    transition-property: background-color, border-color, color, transform;
+    transition-duration: var(--duration-fast);
+    transition-timing-function: var(--ease-standard);
+  }
+
+  .ui-button:active:not(:disabled) {
+    transform: translateY(1px);
+  }
+
   .page-container {
     width: min(100% - 2 * var(--layout-gutter), var(--layout-max));
     margin-inline: auto;
@@ -146,7 +156,6 @@ button:not(:disabled) {
     border: 1px solid var(--color-border);
     border-radius: var(--radius-surface);
     background: var(--color-surface);
-    box-shadow: var(--shadow-surface);
   }
 
   .media-frame {

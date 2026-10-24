@@ -5,7 +5,7 @@
 | #   | Stage                | Status   | Notes                                                            |
 | --- | -------------------- | -------- | ---------------------------------------------------------------- |
 | 1   | Project architecture | Complete | Next.js App Router foundation, configuration, and documentation. |
-| 2   | Design system        | Active   | Task 2.1 complete; Tasks 2.2 and 2.3 remain pending.             |
+| 2   | Design system        | Active   | Tasks 2.1 and 2.2 complete; Task 2.3 remains pending.            |
 | 3   | Global layout        | Pending  | Root document only; navigation and footer remain.                |
 | 4   | Homepage             | Pending  | Temporary starter page only.                                     |
 | 5   | Product data         | Pending  | Await verified menu information.                                 |
@@ -29,7 +29,7 @@
 ## Stage 2 tasks
 
 - Task 2.1 — Premium brand identity, typography, and design foundation: Complete.
-- Task 2.2: Pending.
+- Task 2.2 — Premium reusable UI component library: Complete.
 - Task 2.3: Pending.
 
 ## Unresolved decisions
@@ -52,3 +52,10 @@
 - Production page returned HTTP 200 with the expected copy, compiled tokens, font variables, and reduced-motion CSS.
 - Chrome visual review at 320px, 400px, and desktop width showed readable typography, correct brand colors, and no visible horizontal overflow. Browser console showed no current issues after reload.
 - Calculated contrast on warm ivory: burgundy 11.44:1, espresso 15.08:1, and warm gray 4.95:1. Antique gold is used decoratively, not as small text.
+
+### Task 2.2 verification
+
+- `npm.cmd run typecheck`, `npm.cmd run lint`, `npm.cmd run build`, and `npm.cmd run format:check`: passed.
+- Development `/ui-preview` returned HTTP 200; production `/ui-preview` returned 404 without preview content. The existing homepage returned HTTP 200.
+- Chrome visual review at desktop and 320px showed button variants, cards, badges, media frames, and skeletons rendering without visible horizontal overflow. Keyboard focus was visible; disabled and loading buttons were non-interactive.
+- No new browser errors were observed. The pre-existing missing `/favicon.ico` request remains outside this task.

@@ -4,6 +4,9 @@
 
 - `src/app/`: App Router routes, root layout, metadata, and global styles.
 - `src/app/globals.css`: Tailwind import, design tokens, and accessibility defaults.
+- `src/components/ui/`: reusable visual controls and surfaces.
+- `src/components/shared/`: layout primitives for future pages.
+- `src/lib/classNames.ts`: minimal conditional class joining without a styling dependency.
 - `public/`: static assets when approved images are available.
 - `docs/`: architecture, progress, and decision log.
 
@@ -11,7 +14,6 @@
 
 Create directories when their first implementation is added:
 
-- `src/components/ui/`: reusable interface elements.
 - `src/components/layout/`: site header, footer, and page shell.
 - `src/components/home/`: homepage sections.
 - `src/components/menu/` and `src/components/products/`: menu browsing and product presentation.
@@ -46,3 +48,18 @@ Use `.page-container` for a centered maximum width of `84rem` (1344px) with flui
 ### Responsive and accessible defaults
 
 The fluid container, type scales, gutters, and section spacing cover mobile through large desktop without a separate layout framework. Tailwind breakpoints remain available for component-specific changes. Base styles provide readable text, underlined links, a visible `:focus-visible` ring, disabled cursors, balanced headings, and reduced-motion behavior. Check contrast whenever tokens are combined; gold and raw pistachio are not intended for small text on ivory.
+
+## Reusable UI library
+
+Import components directly from `src/components/ui/` or `src/components/shared/`. They are server-compatible and use the existing Tailwind and CSS tokens. Pass `className` for local layout adjustments rather than redefining the palette.
+
+- `Button`, `ButtonLink`: primary, secondary, outline, and ghost variants; sm/md/lg sizes; optional icons and full width. `Button` accepts native button props, disabled, and loading. `ButtonLink` uses Next.js `Link` for real navigation.
+- `Card`, `CardHeader`, `CardContent`, `CardFooter`: composable default, elevated, or outlined surfaces. `hoverable` adds visual emphasis without turning a card into a control.
+- `Badge`: default, featured, bestseller, success, warning, unavailable, and neutral styling; sm/md size, soft/pill shape, and optional decorative icon. Product claims require verified data.
+- `Container`, `Section`, `SectionHeading`: shared 1344px layout, optional narrow content, section backgrounds, and eyebrow/title/description headings with h2–h4 level and alignment.
+- `MediaFrame`: stable square, 4:5 portrait, 3:2 landscape, or 16:9 wide frame. A real `src` requires meaningful `alt` or `decorative: true`. Uses Next.js `Image` with `fill` and `sizes`.
+- `Divider`, `Skeleton`: standard/accent divider and text/image/card loading shapes. Skeletons are hidden from assistive technology; a real loading flow should provide status in its parent.
+
+Use Lucide React icons at 14–18px with a 1.75 stroke for these compact interfaces. Icons beside visible text are decorative and hidden from screen readers. Do not nest buttons inside links or links inside buttons. Use `aria-label` if a future icon-only control has no visible text.
+
+The showcase lives at `/ui-preview` in development. In production, that route returns 404 and is marked `noindex`. Run `npm.cmd run dev`, then visit `http://localhost:3000/ui-preview` to inspect components. The customer-facing starter page remains at `/`.
