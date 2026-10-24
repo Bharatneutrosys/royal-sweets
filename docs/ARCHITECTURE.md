@@ -19,7 +19,7 @@ Create directories when their first implementation is added:
 - `src/components/menu/` and `src/components/products/`: menu browsing and product presentation.
 - `src/components/cart/`: shopping cart interface.
 - `src/hooks/`: shared client hooks.
-- `src/lib/`: shared utilities and integrations.
+- Additional `src/lib/` modules: shared integrations when needed.
 - `src/types/`: domain types and data models.
 - `public/images/`: locally hosted approved imagery.
 
@@ -43,7 +43,7 @@ Use `.page-container` for a centered maximum width of `84rem` (1344px) with flui
 
 ### Motion and interaction
 
-`--duration-fast`, `--duration-standard`, `--duration-slow`, and `--ease-standard` define reusable CSS motion. `.interactive-surface` offers a simple hover treatment. All motion is effectively disabled under `prefers-reduced-motion: reduce`; smooth scrolling also stops. Avoid adding animation libraries for basic interactions.
+`--duration-fast`, `--duration-standard`, `--duration-slow`, and `--ease-standard` define reusable CSS motion. `.interactive-surface` offers a simple hover treatment. Under `prefers-reduced-motion: reduce`, animations and transitions stop, interactive transforms are removed, and smooth scrolling stops. Avoid adding animation libraries for basic interactions.
 
 ### Responsive and accessible defaults
 
@@ -55,8 +55,8 @@ Import components directly from `src/components/ui/` or `src/components/shared/`
 
 - `Button`, `ButtonLink`: primary, secondary, outline, and ghost variants; sm/md/lg sizes; optional icons and full width. `Button` accepts native button props, disabled, and loading. `ButtonLink` uses Next.js `Link` for real navigation.
 - `Card`, `CardHeader`, `CardContent`, `CardFooter`: composable default, elevated, or outlined surfaces. `hoverable` adds visual emphasis without turning a card into a control.
-- `Badge`: default, featured, bestseller, success, warning, unavailable, and neutral styling; sm/md size, soft/pill shape, and optional decorative icon. Product claims require verified data.
-- `Container`, `Section`, `SectionHeading`: shared 1344px layout, optional narrow content, section backgrounds, and eyebrow/title/description headings with h2–h4 level and alignment.
+- `Badge`: default, featured, bestseller, success, warning, unavailable, and neutral styling; sm/md size, soft/pill shape, and optional decorative icon. Long labels wrap within their available width. Product claims require verified data.
+- `Container`, `Section`, `SectionHeading`: shared 1344px layout, optional narrow content, section backgrounds, and eyebrow/title/plain-text description headings with h2–h4 level and alignment.
 - `MediaFrame`: stable square, 4:5 portrait, 3:2 landscape, or 16:9 wide frame. A real `src` requires meaningful `alt` or `decorative: true`. Uses Next.js `Image` with `fill` and `sizes`.
 - `Divider`, `Skeleton`: standard/accent divider and text/image/card loading shapes. Skeletons are hidden from assistive technology; a real loading flow should provide status in its parent.
 

@@ -1,10 +1,9 @@
-import type { ReactNode } from "react";
 import { classNames } from "@/lib/classNames";
 
 export type SectionHeadingProps = {
   eyebrow?: string;
   title: string;
-  description?: ReactNode;
+  description?: string;
   align?: "left" | "center";
   level?: 2 | 3 | 4;
   id?: string;

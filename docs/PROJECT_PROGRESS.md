@@ -5,7 +5,7 @@
 | #   | Stage                | Status   | Notes                                                            |
 | --- | -------------------- | -------- | ---------------------------------------------------------------- |
 | 1   | Project architecture | Complete | Next.js App Router foundation, configuration, and documentation. |
-| 2   | Design system        | Active   | Tasks 2.1 and 2.2 complete; Task 2.3 remains pending.            |
+| 2   | Design system        | Complete | Tasks 2.1–2.3 verified.                                          |
 | 3   | Global layout        | Pending  | Root document only; navigation and footer remain.                |
 | 4   | Homepage             | Pending  | Temporary starter page only.                                     |
 | 5   | Product data         | Pending  | Await verified menu information.                                 |
@@ -30,13 +30,14 @@
 
 - Task 2.1 — Premium brand identity, typography, and design foundation: Complete.
 - Task 2.2 — Premium reusable UI component library: Complete.
-- Task 2.3: Pending.
+- Task 2.3 — Design system validation and refinement: Complete.
 
 ## Unresolved decisions
 
 - Confirm menu content, prices, imagery, and business details before using them.
 - Decide ordering integration and cart behavior in their respective stages.
-- Confirm brand assets and visual direction before finishing the design system.
+- Confirm approved brand assets before future marketing pages.
+- Supply an approved favicon or brand mark; the existing `/favicon.ico` request returns 404.
 
 ## Verification
 
@@ -59,3 +60,11 @@
 - Development `/ui-preview` returned HTTP 200; production `/ui-preview` returned 404 without preview content. The existing homepage returned HTTP 200.
 - Chrome visual review at desktop and 320px showed button variants, cards, badges, media frames, and skeletons rendering without visible horizontal overflow. Keyboard focus was visible; disabled and loading buttons were non-interactive.
 - No new browser errors were observed. The pre-existing missing `/favicon.ico` request remains outside this task.
+
+### Task 2.3 verification
+
+- Confirmed the seven original palette values and calculated text contrast for primary, muted, secondary, success, warning, and unavailable states; all tested text pairs met 4.5:1 or better. Antique gold remains decorative.
+- Checked the development preview in Chrome at 320px, 768px, and desktop width. Buttons, badges, cards, and media frames remained within the viewport; keyboard focus and disabled control semantics were visible.
+- Refined reduced-motion behavior, long badge wrapping, section description typing, loading icon visibility, and Tailwind base-layer defaults without changing the temporary homepage.
+- `npm.cmd run typecheck`, `npm.cmd run lint`, `npm.cmd run format:check`, and `npm.cmd run build`: passed.
+- Production smoke test: `/` returned 200 and `/ui-preview` returned 404 without preview content.

@@ -89,29 +89,31 @@ body {
   line-height: 1.7;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-playfair), Georgia, serif;
-  text-wrap: balance;
-}
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-playfair), Georgia, serif;
+    text-wrap: balance;
+  }
 
-p {
-  text-wrap: pretty;
-}
+  p {
+    text-wrap: pretty;
+  }
 
-a:not(.button-link) {
-  color: var(--color-primary);
-  text-decoration-line: underline;
-  text-underline-offset: 0.2em;
-  transition: color var(--duration-fast) var(--ease-standard);
-}
+  a:not(.button-link) {
+    color: var(--color-primary);
+    text-decoration-line: underline;
+    text-underline-offset: 0.2em;
+    transition: color var(--duration-fast) var(--ease-standard);
+  }
 
-a:not(.button-link):hover {
-  color: var(--color-primary-hover);
+  a:not(.button-link):hover {
+    color: var(--color-primary-hover);
+  }
 }
 
 button:not(:disabled) {
@@ -185,8 +187,13 @@ button:not(:disabled) {
   *,
   *::before,
   *::after {
-    animation-duration: 0.01ms !important;
+    animation: none !important;
     scroll-behavior: auto !important;
-    transition-duration: 0.01ms !important;
+    transition: none !important;
+  }
+
+  .ui-button:active:not(:disabled),
+  .interactive-surface:hover {
+    transform: none;
   }
 }

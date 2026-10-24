@@ -25,3 +25,11 @@
 - Make cards composable presentation surfaces, not implicit click targets. Future features decide whether a card contains an actual link or action.
 - Require alt text for meaningful media through the `MediaFrame` TypeScript interface. Reserve aspect ratio before image loading to avoid layout shift.
 - Keep the component showcase development-only and return 404 in production rather than exposing an unfinished playground.
+
+## Task 2.3
+
+- Stop animations and transitions completely under reduced-motion preference, including button press and card hover movement. Extremely short repeating animations can still cause unnecessary work.
+- Let long badge labels wrap inside narrow containers instead of forcing one line and risking horizontal overflow.
+- Keep `SectionHeading.description` plain text so its paragraph wrapper always remains valid HTML. Hide a loading button's trailing action icon while the spinner is shown.
+- Put heading and link defaults in Tailwind's base layer so future utility classes can override them without selector fights.
+- Leave the favicon open until an approved brand mark is available; adding an invented logo would be outside this refinement pass.

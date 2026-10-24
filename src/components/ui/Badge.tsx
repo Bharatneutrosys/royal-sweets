@@ -41,7 +41,7 @@ export function Badge({
     <span
       {...badgeProps}
       className={classNames(
-        "inline-flex items-center gap-1.5 border font-body font-semibold whitespace-nowrap",
+        "inline-flex max-w-full items-center gap-1.5 border font-body font-semibold break-words text-center",
         size === "sm" ? "px-2 py-0.5 text-caption" : "px-2.5 py-1 text-label",
         shape === "pill" ? "rounded-full" : "rounded-control",
         variantClasses[variant],

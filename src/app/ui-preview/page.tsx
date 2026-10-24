@@ -101,7 +101,12 @@ export default function UiPreviewPage() {
             <Button size="sm">Small</Button>
             <Button size="lg">Large</Button>
             <Button disabled>Disabled</Button>
-            <Button loading>Loading</Button>
+            <Button
+              loading
+              trailingIcon={<ArrowRight size={18} strokeWidth={1.75} />}
+            >
+              Loading
+            </Button>
             <ButtonLink
               href="/"
               variant="outline"
@@ -193,6 +198,9 @@ export default function UiPreviewPage() {
             <Badge variant="neutral" size="sm">
               Muted
             </Badge>
+          </div>
+          <div className="mt-4 max-w-44">
+            <Badge variant="neutral">A longer sample status label</Badge>
           </div>
           <Divider className="mt-12" />
           <Divider variant="accent" decorative className="mt-8" />

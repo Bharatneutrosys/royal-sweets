@@ -98,7 +98,7 @@ export function Button({
         leadingIcon && <ButtonIcon>{leadingIcon}</ButtonIcon>
       )}
       {children}
-      {trailingIcon && <ButtonIcon>{trailingIcon}</ButtonIcon>}
+      {!loading && trailingIcon && <ButtonIcon>{trailingIcon}</ButtonIcon>}
     </button>
   );
 }
