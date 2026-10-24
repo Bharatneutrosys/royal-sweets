@@ -26,7 +26,7 @@ export function FeaturedProductCard({
   return (
     <Link
       href={category.href}
-      aria-labelledby={`product-${product.id}`}
+      aria-label={`Browse ${category.label} for ${product.name}`}
       className="product-link group block min-w-0 rounded-surface no-underline focus-visible:outline-offset-4"
     >
       <Card

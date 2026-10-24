@@ -39,8 +39,8 @@ const categoryEditorial: Record<CategorySlug, CategoryEditorial> = {
     subtitle: "The perfect savory crunch.",
     description:
       "Explore the world of crunchy Indian savory mixtures and namkeen.",
-    image: "/images/categories/savory-snack-mix.webp",
-    imageAlt: "Bowl of assorted crunchy savory snack pieces",
+    image: "/images/categories/namkeen-mixture.webp",
+    imageAlt: "Illustrative namkeen mixture with sev and peanuts in a bowl",
   },
   "indian-food": {
     subtitle: "Comfort food with authentic flavor.",

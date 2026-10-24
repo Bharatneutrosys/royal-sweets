@@ -12,17 +12,10 @@ export function VisitSection() {
         <div className="max-w-xl">
           <SectionHeading
             id="visit-heading"
-            eyebrow="Find Us in Richardson"
+            eyebrow="Visit Royal Sweets"
             title="Your Next Stop for Something Delicious"
             description="Visit Royal Sweets & Fast Food on W Belt Line Road in Richardson, Texas."
           />
-          <p className="mt-5 font-body text-body text-muted">
-            Explore the menu before you come by, or call for current hours and
-            information.
-          </p>
-          <ButtonLink href="/menu" variant="outline" className="mt-8">
-            Browse the Menu
-          </ButtonLink>
         </div>
 
         <div className="min-w-0 rounded-surface border border-border bg-surface p-6 sm:p-8 lg:p-10">
@@ -58,7 +51,7 @@ export function VisitSection() {
               />
               <a
                 href={business.phone.href}
-                className="min-h-11 content-center font-body text-supporting font-semibold text-primary"
+                className="inline-flex min-h-11 items-center font-body text-supporting font-semibold text-primary"
               >
                 {business.phone.display}
               </a>

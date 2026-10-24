@@ -2,7 +2,6 @@ import Image from "next/image";
 import { Container } from "@/components/shared/Container";
 import { Section } from "@/components/shared/Section";
 import { SectionHeading } from "@/components/shared/SectionHeading";
-import { ButtonLink } from "@/components/ui/Button";
 
 export function BrandStorySection() {
   return (
@@ -11,18 +10,15 @@ export function BrandStorySection() {
         <div className="max-w-xl">
           <SectionHeading
             id="story-heading"
-            eyebrow="Our Story"
+            eyebrow="Our Story & Heritage"
             title="A Place for Sweet and Savory Traditions"
             description="At Royal Sweets & Fast Food in Richardson, discover Indian sweets, chaat, snacks, and comforting favorites in one destination."
           />
           <p className="mt-5 font-body text-body text-muted">
             Some flavors bring back a familiar memory. Others become a new
-            favorite. Explore both sides of the menu and find something to
+            favorite. Discover both sides of the menu and find something to
             share.
           </p>
-          <ButtonLink href="/menu" variant="outline" className="mt-8">
-            Explore Our Menu
-          </ButtonLink>
         </div>
 
         <figure className="min-w-0">

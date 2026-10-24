@@ -7,7 +7,7 @@
 | 1   | Project architecture | Complete | Next.js App Router foundation, configuration, and documentation. |
 | 2   | Design system        | Complete | Tasks 2.1–2.3 verified.                                          |
 | 3   | Global layout        | Complete | Tasks 3.1–3.4 verified in code; visual review remains.           |
-| 4   | Homepage             | Active   | Tasks 4.1–4.3 complete; Task 4.4 awaits the full brief.          |
+| 4   | Homepage             | Complete | Technical QA passed; manual visual acceptance remains pending.   |
 | 5   | Product data         | Pending  | Await verified menu information.                                 |
 | 6   | Menu pages           | Pending  |                                                                  |
 | 7   | Product details      | Pending  |                                                                  |
@@ -52,7 +52,8 @@ Task 3.4 reviewed route landmarks, desktop and mobile navigation, footer data an
 - Task 4.1 — Luxury homepage hero and visual storytelling: Complete.
 - Task 4.2 — Category showcase: Complete.
 - Task 4.3 — Featured product showcases: Complete.
-- Task 4.4 — Brand story, celebrations, and location: In progress; technical implementation verified, remaining brief requested.
+- Task 4.4 — Brand story, celebrations, and location: Technically complete; owner editorial review pending.
+- Task 4.5 — Homepage refinement and QA: Technically complete; manual visual acceptance pending.
 
 Task 4.1 replaced the temporary homepage with a single editorial hero, two working CTA destinations, and one locally optimized, licensed Indian sweets photograph. It added editorial and ingredient standards without publishing item prices, unconfirmed recipes, or a product catalog. No new runtime dependency was installed.
 
@@ -60,18 +61,21 @@ Task 4.2 added six linked, image-rich category cards directly beneath the hero. 
 
 Task 4.3 added six Signature Sweets and six Royal Favorites in two responsive homepage sections. The typed dataset contains the owner-supplied online prices, traditional editorial descriptions, category associations, and image credits. Ten new locally optimized photos were licensed and two category photos reused. The ordering page returned HTTP 403 to a terminal request, so live price verification remains pending and `priceLastVerified` is null. On-page notes tell customers to confirm current prices. Product cards link to existing menu category placeholders; a separate action opens the established ordering site. No cart, product details, popularity claims, or new dependencies were introduced.
 
-Task 4.4's supplied message stopped at “SECTION ONE: OUR STORY &”. A conservative implementation added three homepage sections using menu-based editorial copy, a call-to-ask celebrations invitation, and the confirmed Richardson location. Existing licensed images were reused. The detailed remainder of the brief was requested and is still needed before treating the task or Stage 4 as fully complete.
+Task 4.4's supplied message stopped at “SECTION ONE: OUR STORY &”. A conservative implementation added three homepage sections using menu-based editorial copy, a call-to-ask celebrations invitation, and the confirmed Richardson location. Task 4.5 confirmed these three purposes and reviewed the complete homepage structure. The missing detailed brief still limits owner editorial signoff, but the available technical requirements are complete.
+
+Task 4.5 audited the seven homepage sections, image subjects and licenses, content, actions, responsive CSS, semantics, and performance. It replaced the generic savory-mix photo with a documented CC0 namkeen photo, removed two redundant menu actions, clarified the group-order phone action, corrected a dark-surface focus outline and phone-link touch target, and made product-card link names describe their category destinations. No new dependency or client component was added.
 
 ## Unresolved decisions
 
-- Confirm menu content, prices, imagery, business hours, and official social URLs before using them.
+- Reconfirm menu content, prices, imagery, business hours, and official social URLs before expanding customer-facing claims.
 - Decide ordering integration and cart behavior in their respective stages.
 - Confirm approved brand assets before future marketing pages.
 - Supply an approved favicon or brand mark; the existing `/favicon.ico` request returns 404.
 - Create legal pages only when approved policy text is available.
 - Obtain approved Royal Sweets photography when available; the current hero image is illustrative stock photography.
-- Obtain owner-approved category photography when available. The mango drink stock photo is not verified as lassi, and the general savory mix photo does not verify a Royal Sweets hot-mix product or inventory.
+- Obtain owner-approved category photography when available. The mango drink stock photo is not verified as lassi; the CC0 namkeen photo does not verify Royal Sweets hot-mix inventory.
 - Reconfirm the twelve owner-supplied online prices used on the homepage; terminal access to the ordering page again returned HTTP 403 during Task 4.3. Confirm availability, portion units, and recipes before Stage 5 catalog work. “Julie” remains excluded.
+- Obtain the missing detailed Task 4.4 copy requirements, if any, for owner editorial review; no business history, catering guarantee, or unconfirmed hours were published.
 
 ## Verification
 
@@ -164,4 +168,20 @@ Task 4.4's supplied message stopped at “SECTION ONE: OUR STORY &”. A conserv
 - Generated homepage HTML includes story, celebrations, and visit sections in order after the featured products; it retains one header, one main, one footer, and one H1.
 - Static checks found the confirmed Richardson street address, ZIP code, phone link, unknown-hours fallback, directions URL, and reused image references. No Floyd Circle address or second-business detail was found.
 - Browser and visual verification: Pending Manual User Verification. No browser, localhost, screenshot, or automated visual test was used.
-- Completion remains pending the missing remainder of the owner's Task 4.4 brief.
+- The later Task 4.5 brief confirmed the three section purposes. Owner review of editorial copy remains pending because the earlier detailed Task 4.4 message was incomplete.
+
+### Task 4.5 verification
+
+- `npm.cmd run typecheck`, `npm.cmd run lint`, `npm.cmd run format:check`, and `npm.cmd run build`: passed. Existing customer routes still generated.
+- Static production HTML checks found one header, main, footer, and H1; seven homepage sections in the intended order; twelve distinct product cards with the owner-supplied prices and correct category routes; confirmed Richardson address, phone, directions, and unknown-hours copy; and no fake cart links or Floyd Circle details.
+- Local image review found recognizable food subjects. The generic Hot Mix asset was replaced with a namkeen photograph marked CC0 in Wikimedia Commons metadata. The [license](https://creativecommons.org/publicdomain/zero/1.0/) and original source were checked through terminal HTTP and recorded in `IMAGE_SOURCES.md`. No ordering-platform photograph was copied.
+- Code review confirmed reserved image frames, responsive `sizes`, lazy loading below the hero, a single priority hero image, no extra client component, visible ivory focus on the burgundy celebrations section, touch-height phone access, and reduced-motion handling.
+- Browser-dependent visual, keyboard, and responsive verification: Pending Manual User Verification. No browser, screenshot, localhost, or automated visual test was used.
+
+## Manual homepage QA checklist
+
+- At 320px, 375px, 430px, 768px, 1024px, 1280px, and 1440px, check section spacing, image crops, text wrapping, button fit, and horizontal overflow.
+- Use keyboard navigation to check the desktop Menu dropdown, mobile drawer, product cards, celebrations actions, photo credits, phone link, and directions link. Confirm focus remains visible on ivory and burgundy backgrounds.
+- Confirm the new Hot Mix image depicts namkeen, the hero and product photos remain clear, and illustrative captions do not suggest restaurant-owned photography.
+- Open a category card, product card, Order Online link, phone link, and directions link to confirm each destination and new-tab behavior.
+- Review story and celebrations copy with the owner; confirm current prices, hours, and group-order options before adding stronger claims.

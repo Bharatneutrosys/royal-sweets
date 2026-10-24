@@ -95,3 +95,10 @@
 - Treat celebrations as an invitation to ask about current options by phone. The project does not contain owner-confirmed catering packages or event-service details, so the section makes no availability promise and does not build a catering form.
 - Reuse existing licensed Unsplash product photography for story and celebrations, with illustrative captions. No unrelated business imagery or new license obligations were introduced.
 - Reuse `business.ts` for the Richardson address, phone, unknown-hours fallback, and directions URL. A lightweight address card avoids a map embed, third-party script, and unverified geolocation data.
+
+## Task 4.5
+
+- Make only evidence-backed corrections to the existing homepage: remove redundant menu CTAs, clarify the celebrations phone action, and address focus visibility and phone-link target size. Keep the established fonts, tokens, components, and section layouts.
+- Replace the generic Hot Mix photo with a photograph explicitly identified as Indian namkeen. Wikimedia Commons marks it CC0; source and processing are recorded in `IMAGE_SOURCES.md`. The image remains illustrative and does not verify a Royal Sweets product.
+- Keep the owner-supplied online prices with `priceLastVerified: null` because live ordering-page requests remain blocked. Preserve traditional descriptions as editorial examples and avoid fabricated serving units or rankings.
+- Treat Stage 4 as technically complete after source, static-output, and build checks, with visual acceptance still pending manual user review. The separate detailed Task 4.4 brief was truncated, so owner review of its editorial copy remains open.

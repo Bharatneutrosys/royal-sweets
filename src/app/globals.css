@@ -157,6 +157,10 @@ button:not(:disabled) {
   outline-color: var(--color-on-primary);
 }
 
+.celebrations-section .ui-button:focus-visible {
+  outline-color: var(--color-on-primary);
+}
+
 @layer components {
   .ui-button {
     transition-property: background-color, border-color, color, transform;
