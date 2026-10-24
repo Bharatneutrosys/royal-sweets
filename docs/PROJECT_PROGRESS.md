@@ -5,7 +5,7 @@
 | #   | Stage                | Status   | Notes                                                            |
 | --- | -------------------- | -------- | ---------------------------------------------------------------- |
 | 1   | Project architecture | Complete | Next.js App Router foundation, configuration, and documentation. |
-| 2   | Design system        | Pending  | Token variables and fonts are prepared; full system remains.     |
+| 2   | Design system        | Active   | Task 2.1 complete; Tasks 2.2 and 2.3 remain pending.             |
 | 3   | Global layout        | Pending  | Root document only; navigation and footer remain.                |
 | 4   | Homepage             | Pending  | Temporary starter page only.                                     |
 | 5   | Product data         | Pending  | Await verified menu information.                                 |
@@ -26,6 +26,12 @@
 - Added strict TypeScript, Tailwind CSS, ESLint, Prettier, metadata, fonts, tokens, and a temporary responsive page.
 - Documented intended feature locations without creating empty placeholder files.
 
+## Stage 2 tasks
+
+- Task 2.1 — Premium brand identity, typography, and design foundation: Complete.
+- Task 2.2: Pending.
+- Task 2.3: Pending.
+
 ## Unresolved decisions
 
 - Confirm menu content, prices, imagery, and business details before using them.
@@ -39,3 +45,10 @@
 - `npm.cmd run lint`: passed without warnings.
 - `npm.cmd run format:check`: passed.
 - `npm.cmd run build`: passed; `/` and `/_not-found` prerendered as static routes.
+
+### Task 2.1 verification
+
+- `npm.cmd run typecheck`, `npm.cmd run lint`, `npm.cmd run build`, and `npm.cmd run format:check`: passed.
+- Production page returned HTTP 200 with the expected copy, compiled tokens, font variables, and reduced-motion CSS.
+- Chrome visual review at 320px, 400px, and desktop width showed readable typography, correct brand colors, and no visible horizontal overflow. Browser console showed no current issues after reload.
+- Calculated contrast on warm ivory: burgundy 11.44:1, espresso 15.08:1, and warm gray 4.95:1. Antique gold is used decoratively, not as small text.
