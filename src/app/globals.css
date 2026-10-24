@@ -200,21 +200,27 @@ button:not(:disabled) {
     animation: hero-enter var(--duration-slow) var(--ease-standard) both;
   }
 
-  .category-link .media-frame img {
+  .category-link .media-frame img,
+  .product-link .media-frame img {
     transition: transform var(--duration-slow) var(--ease-standard);
   }
 
   .category-link:hover .media-frame img,
-  .category-link:focus-visible .media-frame img {
+  .category-link:focus-visible .media-frame img,
+  .product-link:hover .media-frame img,
+  .product-link:focus-visible .media-frame img {
     transform: scale(1.035);
   }
 
-  .category-action svg {
+  .category-action svg,
+  .product-action svg {
     transition: transform var(--duration-standard) var(--ease-standard);
   }
 
   .category-link:hover .category-action svg,
-  .category-link:focus-visible .category-action svg {
+  .category-link:focus-visible .category-action svg,
+  .product-link:hover .product-action svg,
+  .product-link:focus-visible .product-action svg {
     transform: translate(0.2rem, -0.2rem);
   }
 
@@ -289,7 +295,11 @@ button:not(:disabled) {
   .category-link:hover .media-frame img,
   .category-link:focus-visible .media-frame img,
   .category-link:hover .category-action svg,
-  .category-link:focus-visible .category-action svg {
+  .category-link:focus-visible .category-action svg,
+  .product-link:hover .media-frame img,
+  .product-link:focus-visible .media-frame img,
+  .product-link:hover .product-action svg,
+  .product-link:focus-visible .product-action svg {
     transform: none;
   }
 }

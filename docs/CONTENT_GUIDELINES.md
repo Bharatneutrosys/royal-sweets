@@ -8,7 +8,9 @@ Write with warmth, clarity, and specific sensory detail. Keep product descriptio
 
 The ordering reference supplied for this project is https://order.online/store/royal-sweets-fast-food-west-belt-line-road-303445. The owner-provided Task 4.1 list includes sweets, chaat, snacks, Indian food, and lassi, which supports the hero's broad category language. A non-browser HTTP request to the ordering page returned 403 on 2026-10-24, so its live content and prices could not be independently checked during this task. No item or price from that list is published in the hero.
 
-Before Stage 5 publishes products, confirm each name, description, availability, price, currency, and source date. Ordering-platform prices can differ from in-store prices. Do not infer serving size, count, weight, or per-pound units. Ask the owner to clarify unfamiliar names such as “Julie” before writing a description.
+Task 4.3 publishes only the twelve owner-supplied featured item names and online prices in a clearly labeled homepage snapshot. The ordering page again returned HTTP 403 to a terminal request on 2026-10-24; current live prices could not be independently verified, so `priceLastVerified` remains null. Cards direct customers to confirm current amounts on the ordering platform and note that in-store prices may differ.
+
+Before Stage 5 publishes a full catalog, confirm each name, description, availability, price, currency, and source date. Do not infer serving size, count, weight, or per-pound units. Ask the owner to clarify unfamiliar names such as “Julie” before writing a description.
 
 ## Product descriptions
 
@@ -37,3 +39,5 @@ Until confirmed, mark ingredients and allergens as pending internally. Do not cl
 Use restaurant-owned imagery only with permission, or licensed stock imagery with recorded source and license. Label stock photography as illustrative and do not imply it depicts Royal Sweets products. The current hero image is recorded in [IMAGE_SOURCES.md](IMAGE_SOURCES.md). Replace it with approved restaurant photography when available, preserving meaningful alt text and local optimization.
 
 The six Task 4.2 category images are also illustrative. The beverage photo depicts a mango drink but is not verified as lassi; the savory mix is a general snack-mix photo and does not establish any Royal Sweets hot-mix product. Category text describes broad cuisines, not specific in-house preparations or availability. Confirm hot-mix inventory and obtain approved restaurant photography before using product-specific claims.
+
+Task 4.3 product descriptions explain traditional dishes in general. They do not verify Royal Sweets ingredients, preparation, portions, or presentation. Product photography is also illustrative, and some licensed photographs depict food from other kitchens. The homepage credits disclosure identifies creators and licenses; the source ledger records local processing. Do not add recipe-specific claims, allergen badges, dietary labels, or nutritional data until the restaurant confirms them.

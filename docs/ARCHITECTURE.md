@@ -11,7 +11,9 @@
 - `src/lib/classNames.ts`: minimal conditional class joining without a styling dependency.
 - `src/lib/business.ts`: supplied business identity, address, phone, ordering URL, and unconfirmed hours/social configuration.
 - `src/lib/siteNavigation.ts`: shared navigation destinations, menu category paths, and active-link matching.
+- `src/lib/featuredProducts.ts` and `src/types/featuredProduct.ts`: typed, single-source homepage product snapshot and price provenance.
 - `public/images/hero/`: locally optimized, licensed hero photography.
+- `public/images/products/`: locally optimized, licensed illustrative product photography.
 - `docs/`: architecture, progress, and decision log.
 
 ## Planned organization
@@ -110,3 +112,13 @@ The grid has one column by default, two at `md`, and three at `lg`. Each photo u
 The image is a locally stored, licensed stock photograph imported statically into Next.js `Image`. A fixed aspect-ratio frame reserves space, `sizes` selects responsive image widths, `priority` preloads the lead image, and the static import supplies a blur placeholder. The caption identifies the image as illustrative and credits the photographer; it makes no claim about Royal Sweets products. Source, license, and processing are recorded in `docs/IMAGE_SOURCES.md`.
 
 The section stacks copy and image on mobile and uses a balanced two-column composition at `lg`. A quiet sand field and gold frame accent the image without another color system. Short CSS entrance animations reuse motion tokens; global reduced-motion rules disable them. Product descriptions, prices, ingredients, and allergen standards are in `docs/CONTENT_GUIDELINES.md`. No catalog or product components are introduced in Task 4.1.
+
+## Featured homepage products
+
+`src/lib/featuredProducts.ts` is the only record list for the six Signature Sweets and six Royal Favorites. `FeaturedProduct` stores stable ID and slug, category ID, traditional editorial description, local image and alt, source credit, integer-cent online price, ordering-page URL, nullable verification date and price unit, section ID, and display order. The prices came from the owner-provided Task 4.3 menu list, received 2026-10-24. Direct terminal access to the ordering page returned HTTP 403, so `priceLastVerified` remains `null`; no serving unit is inferred. Stage 5 can extend the model after current prices, availability, and product details are confirmed. “Julie” is excluded pending identification.
+
+`FeaturedProductsSection` renders the two server-side sections after `CategoryShowcase`; `FeaturedProductCard` is their reusable link surface. Product cards resolve internal category paths from `siteNavigation.ts` and do not imply product detail pages or a cart. Section actions link to `/menu/sweets`, `/menu`, and the existing external ordering URL. The category routes are still development placeholders.
+
+Sweets use a three-column image-first grid at `lg`; favorites use a two-column grid with horizontal cards at `lg`. Both collapse to two columns at `md` and one on phones. `MediaFrame` reserves square image space, uses responsive Next.js Image sizing, and lazy loads below the hero. Existing `Card`, `Section`, `Container`, `SectionHeading`, and `ButtonLink` primitives provide styling. CSS-only image and arrow motion shares the existing timing tokens and respects reduced motion.
+
+Product photographs are illustrative and their original sources and licenses are recorded in `IMAGE_SOURCES.md`. Two approved category photos are reused for Masala Dosa and Pani Puri rather than copied. A collapsed, keyboard-accessible credits disclosure in each section gives on-page attribution and license links, including the CC BY-SA 4.0 images and the WebP conversion note. The per-section pricing note distinguishes supplied online prices from current checkout totals and in-store prices. Product ingredient and allergen statements remain outside this task.

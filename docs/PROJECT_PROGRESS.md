@@ -7,7 +7,7 @@
 | 1   | Project architecture | Complete | Next.js App Router foundation, configuration, and documentation. |
 | 2   | Design system        | Complete | Tasks 2.1–2.3 verified.                                          |
 | 3   | Global layout        | Complete | Tasks 3.1–3.4 verified in code; visual review remains.           |
-| 4   | Homepage             | Active   | Tasks 4.1 and 4.2 complete; later homepage sections pending.     |
+| 4   | Homepage             | Active   | Tasks 4.1–4.3 complete; Task 4.4 remains pending.                |
 | 5   | Product data         | Pending  | Await verified menu information.                                 |
 | 6   | Menu pages           | Pending  |                                                                  |
 | 7   | Product details      | Pending  |                                                                  |
@@ -51,12 +51,14 @@ Task 3.4 reviewed route landmarks, desktop and mobile navigation, footer data an
 
 - Task 4.1 — Luxury homepage hero and visual storytelling: Complete.
 - Task 4.2 — Category showcase: Complete.
-- Task 4.3 — Featured product grids: Pending.
+- Task 4.3 — Featured product showcases: Complete.
 - Task 4.4 — Brand story and catering sections: Pending.
 
 Task 4.1 replaced the temporary homepage with a single editorial hero, two working CTA destinations, and one locally optimized, licensed Indian sweets photograph. It added editorial and ingredient standards without publishing item prices, unconfirmed recipes, or a product catalog. No new runtime dependency was installed.
 
 Task 4.2 added six linked, image-rich category cards directly beneath the hero. Their routes and order derive from shared navigation data; editorial copy and six locally optimized illustrative photos have separate source records. Existing menu category pages remain placeholders. No product listings, prices, new dependencies, or client-side interactions were added.
+
+Task 4.3 added six Signature Sweets and six Royal Favorites in two responsive homepage sections. The typed dataset contains the owner-supplied online prices, traditional editorial descriptions, category associations, and image credits. Ten new locally optimized photos were licensed and two category photos reused. The ordering page returned HTTP 403 to a terminal request, so live price verification remains pending and `priceLastVerified` is null. On-page notes tell customers to confirm current prices. Product cards link to existing menu category placeholders; a separate action opens the established ordering site. No cart, product details, popularity claims, or new dependencies were introduced.
 
 ## Unresolved decisions
 
@@ -67,7 +69,7 @@ Task 4.2 added six linked, image-rich category cards directly beneath the hero. 
 - Create legal pages only when approved policy text is available.
 - Obtain approved Royal Sweets photography when available; the current hero image is illustrative stock photography.
 - Obtain owner-approved category photography when available. The mango drink stock photo is not verified as lassi, and the general savory mix photo does not verify a Royal Sweets hot-mix product or inventory.
-- Reconfirm current menu prices and clarify “Julie” before publishing product data. The ordering page returned HTTP 403 to terminal requests during Task 4.1.
+- Reconfirm the twelve owner-supplied online prices used on the homepage; terminal access to the ordering page again returned HTTP 403 during Task 4.3. Confirm availability, portion units, and recipes before Stage 5 catalog work. “Julie” remains excluded.
 
 ## Verification
 
@@ -144,4 +146,12 @@ Task 4.2 added six linked, image-rich category cards directly beneath the hero. 
 - The production homepage HTML contains one header, one main, one footer, one H1, the category section heading, six category destinations, and six valid local category image references. All six category routes generated static HTML.
 - Generated category images use lazy loading. Source inspection confirmed 4:5 reserved image frames, responsive `sizes`, focus treatment, reduced-motion handling, and no nested interactive controls.
 - Unsplash search metadata identified all six creators and marked the photos free rather than Premium or Unsplash+. The license was checked via terminal HTTP, and the food subjects were inspected from local images. No ordering-platform images were copied.
+- Browser and visual verification: Pending Manual User Verification. No browser, localhost, screenshot, or automated visual test was used.
+
+### Task 4.3 verification
+
+- `npm.cmd run typecheck`, `npm.cmd run lint`, `npm.cmd run format:check`, and `npm.cmd run build`: passed. The production build generated `/` and all existing category routes.
+- A non-browser check of generated homepage HTML found twelve distinct product headings, the twelve supplied prices in their corresponding cards, correct category destinations, valid local image references, the requested section order, one header/main/footer/H1, visible photo-credit disclosures, and a safe external ordering link. No Add to Cart action was generated.
+- Five free Unsplash photos and five CC BY-SA 4.0 Wikimedia Commons photos were checked by terminal metadata/license requests and local image previews. Existing category photos were reused for Masala Dosa and Pani Puri; all source details are in `IMAGE_SOURCES.md`.
+- Code review found responsive one/two/three-column layouts, reserved image frames, focus styling, reduced-motion handling, and no new client component. Product photos use lazy loading below the hero.
 - Browser and visual verification: Pending Manual User Verification. No browser, localhost, screenshot, or automated visual test was used.

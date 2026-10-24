@@ -80,3 +80,11 @@
 - Use one linked card per category with a noninteractive surface inside it. Keep the section server rendered, use the existing 4:5 `MediaFrame`, and avoid a carousel or animation dependency.
 - Use six locally optimized, free non-Premium Unsplash photographs as illustrative category imagery. Source metadata and license were checked through terminal requests, and subjects were inspected locally. The mango beverage photograph is not verified as lassi; the savory mix is not verified as Royal Sweets hot mix. Alt text describes what is visible.
 - Keep existing category routes as placeholders and refrain from publishing product listings or hot-mix inventory. Owner-approved restaurant photography can replace stock files later without changing routes or card structure.
+
+## Task 4.3
+
+- Keep a single typed array for the 12 featured products. Store amounts in integer cents, use the shared ordering URL as the source reference, and leave `priceLastVerified` and `priceUnit` null because the owner-supplied online-menu prices could not be independently checked through terminal HTTP (403). Label prices as online and prompt customers to confirm current totals when ordering.
+- Present traditional dish descriptions as general editorial language, not Royal Sweets recipe, portion, or allergen disclosures. Exclude “Julie” until its identity is clarified; avoid popularity badges and discounts.
+- Reuse the existing Masala Dosa and Pani Puri category photographs. Add ten dish-specific local WebP photos with verified Unsplash or Wikimedia Commons licenses. Provide on-page attribution for CC BY-SA 4.0 works, indicate resizing/WebP conversion, and keep source records in `IMAGE_SOURCES.md`.
+- Link cards to existing category routes and offer a single external Order Online action in the favorites section. This keeps ordering functional without suggesting that a card adds an item to a cart or carries a product selection to the provider.
+- Vary the presentation through an image-first sweets grid and a wider favorites layout while retaining the shared card, image frame, spacing, typography, color, and reduced-motion rules.
