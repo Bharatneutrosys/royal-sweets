@@ -16,7 +16,7 @@
 
 Create directories when their first implementation is added:
 
-- Further `src/components/layout/` modules: mobile drawer and footer when their tasks begin.
+- Further `src/components/layout/` modules: footer when its task begins.
 - `src/components/home/`: homepage sections.
 - `src/components/menu/` and `src/components/products/`: menu browsing and product presentation.
 - `src/components/cart/`: shopping cart interface.
@@ -72,6 +72,10 @@ The showcase lives at `/ui-preview` in development. In production, that route re
 
 `DesktopNavigation` highlights the current route and supplies Home, Menu, Catering, About Us, and Contact links. `MenuDropdown` uses a native `details`/`summary` disclosure containing ordinary links, with Escape, outside-pointer, and route-change closing. It keeps native keyboard link behavior rather than claiming ARIA menu behavior. A small client boundary handles current-route and disclosure state; the rest of the header remains server rendered. The external Order Online `ButtonLink` opens the owner-provided ordering URL in a new tab with `noopener noreferrer`.
 
-At smaller widths, `MobileNavigation` presents the same five destinations in a horizontally scrollable row, while the brand and ordering link remain available. This is a usable interim layout; Task 3.2 will design the full mobile navigation experience. Focus remains visible, and motion uses existing CSS tokens and reduced-motion rules.
+Below Tailwind's `lg` breakpoint (1024px), `MobileNavigation` replaces the desktop links with a 44px menu button. The brand remains visible. The header ordering link appears from `sm` (640px) upward; the same owner-provided link is always available at the bottom of the drawer, including at 320px. At `lg` and above, the desktop navigation and ordering link remain as in Task 3.1. Hidden navigation is removed from keyboard navigation by CSS display rules and the closed dialog state.
+
+The mobile drawer is a native modal `<dialog>` in the browser top layer, above the sticky header's `z-40`; it does not require another z-index scale or a focus-trap dependency. Native modal behavior contains focus and makes the page behind it inert. The trigger uses `aria-expanded` and `aria-controls`; the dialog has a labeled heading and close button. Close, Escape, backdrop click, destination selection, and crossing into the desktop breakpoint dismiss it. Dismissal restores trigger focus when appropriate; resizing to desktop moves focus to the brand link instead of the now-hidden trigger. Body overflow is locked only while open and restored by effect cleanup. The navigation region scrolls independently so its footer action remains visible. CSS uses the existing duration and easing tokens for a restrained entrance; global reduced-motion rules disable it.
+
+The mobile Menu row retains a direct `/menu` link beside a separate button with `aria-expanded` and `aria-controls`. The nested category list comes from `menuCategories` in `siteNavigation.ts`; it is hidden and unfocusable while collapsed. `siteLinks` also drives desktop and mobile primary navigation, and `orderingUrl` is shared by both ordering actions. No category content or ordering flow was added.
 
 `src/app/menu/page.tsx`, `src/app/menu/[category]/page.tsx`, `src/app/catering/page.tsx`, `src/app/about/page.tsx`, and `src/app/contact/page.tsx` are temporary branded placeholders. The menu slugs and labels are defined once in `siteNavigation.ts`. Placeholder metadata is `noindex`; no product or business claims are supplied. Stage 6 and later business tasks will replace these routes with verified content.

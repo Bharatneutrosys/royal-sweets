@@ -42,3 +42,12 @@
 - Keep the sticky treatment CSS-only to avoid scroll listeners and layout shifts. Reuse established colors, spacing, motion, focus, and button styles.
 - Provide a scrollable mobile link row and visible ordering access until Task 3.2 supplies the complete mobile navigation. Do not show a nonfunctional menu icon.
 - Mark placeholder routes `noindex` and limit their content to a title and development notice. Use the supplied external ordering link rather than implying native checkout exists.
+
+## Task 3.2
+
+- Replace the temporary mobile link row with a native modal `<dialog>`. Its top-layer focus containment, backdrop, and background inertness avoid a drawer dependency and custom focus-trap code.
+- Keep the compact brand and 44px menu control visible at every mobile width. Show the header ordering link from 640px upward, while the drawer footer exposes it at all mobile widths without crowding a 320px header.
+- Use the existing 1024px `lg` boundary for desktop navigation. A media-query listener closes an open drawer when crossing to desktop; it is removed on cleanup.
+- Keep Menu as a direct link and use a neighboring button for category expansion. This preserves the landing page and avoids nested interactive elements. Draw both link sets and the external ordering URL from the shared navigation module.
+- Let the navigation area scroll within the dialog while the ordering action stays at the bottom. Lock body scrolling only while the drawer is open, then restore its previous inline overflow value.
+- Use the existing motion tokens for a short CSS entrance and rely on the global reduced-motion rule. Browser visual and interaction review remains with the user for this task.

@@ -177,6 +177,44 @@ button:not(:disabled) {
   .interactive-surface:hover {
     border-color: var(--color-primary);
   }
+
+  .mobile-drawer {
+    position: fixed;
+    inset: 0 0 0 auto;
+    display: flex;
+    width: min(100vw, 26rem);
+    height: 100dvh;
+    max-width: none;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: var(--color-background);
+    color: var(--color-foreground);
+    box-shadow: var(--shadow-surface);
+    animation: drawer-enter var(--duration-standard) var(--ease-standard);
+  }
+
+  .mobile-drawer:not([open]) {
+    display: none;
+  }
+
+  .mobile-drawer::backdrop {
+    background: rgb(41 33 30 / 48%);
+    animation: backdrop-enter var(--duration-standard) ease-out;
+  }
+}
+
+@keyframes drawer-enter {
+  from {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes backdrop-enter {
+  from {
+    opacity: 0;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

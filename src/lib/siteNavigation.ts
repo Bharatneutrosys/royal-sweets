@@ -6,6 +6,9 @@ export const siteLinks = [
   { label: "Contact", href: "/contact" },
 ] as const;
 
+export const orderingUrl =
+  "https://order.online/store/royal-sweets-fast-food-west-belt-line-road-303445";
+
 export const menuCategories = [
   { label: "All Menu", href: "/menu", slug: null },
   { label: "Traditional Indian Sweets", href: "/menu/sweets", slug: "sweets" },

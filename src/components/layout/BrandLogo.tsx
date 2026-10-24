@@ -3,6 +3,7 @@ import Link from "next/link";
 export function BrandLogo() {
   return (
     <Link
+      id="site-brand-link"
       href="/"
       aria-label="Royal Sweets & Fast Food, home"
       className="inline-flex min-w-0 items-center gap-2 no-underline sm:gap-3"

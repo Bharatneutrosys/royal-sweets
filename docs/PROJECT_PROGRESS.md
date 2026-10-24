@@ -6,7 +6,7 @@
 | --- | -------------------- | -------- | ---------------------------------------------------------------- |
 | 1   | Project architecture | Complete | Next.js App Router foundation, configuration, and documentation. |
 | 2   | Design system        | Complete | Tasks 2.1–2.3 verified.                                          |
-| 3   | Global layout        | Active   | Task 3.1 header complete; mobile navigation and footer remain.   |
+| 3   | Global layout        | Active   | Tasks 3.1–3.2 complete; Task 3.3 and footer remain.              |
 | 4   | Homepage             | Pending  | Temporary starter page only.                                     |
 | 5   | Product data         | Pending  | Await verified menu information.                                 |
 | 6   | Menu pages           | Pending  |                                                                  |
@@ -35,10 +35,13 @@
 ## Stage 3 tasks
 
 - Task 3.1 — Premium header and desktop navigation: Complete.
-- Task 3.2 — Full mobile navigation: Pending.
+- Task 3.2 — Full mobile navigation: Complete.
+- Task 3.3 — Next global layout task: Pending.
 - Later global layout work, including the footer: Pending.
 
 Task 3.1 added a shared sticky header, text-based brand link, desktop navigation with an accessible Menu disclosure, a mobile link-row fallback, and the supplied external ordering link. Menu, catering, about, and contact routes are intentionally minimal `noindex` placeholders. No menu products or unverified business information were added.
+
+Task 3.2 replaced the temporary mobile link row with a modal drawer, an expandable category list, and a persistent drawer ordering action. The desktop header, routes, and temporary page content remain intact. No new dependency was installed.
 
 ## Unresolved decisions
 
@@ -84,3 +87,10 @@ Task 3.1 added a shared sticky header, text-based brand link, desktop navigation
 - `npm.cmd run build`: passed; Next.js generated `/`, `/about`, `/catering`, `/contact`, `/menu`, and all six menu category paths.
 - `git diff --check`: passed. Code review confirmed one global header, semantic navigation links, a keyboard-operable native disclosure with Escape handling, a skip link, and responsive mobile access.
 - Browser and visual verification: Pending Manual User Verification, as requested for this task. No browser, screenshot, or localhost inspection was performed.
+
+### Task 3.2 verification
+
+- `npm.cmd run typecheck`, `npm.cmd run lint`, `npm.cmd run format:check`, and `npm.cmd run build`: passed.
+- Production build retained the homepage, business placeholders, menu landing page, and six generated category paths.
+- Code review confirmed native modal focus containment, Escape and backdrop dismissal, scroll-lock cleanup, desktop-breakpoint dismissal, separate Menu link and expansion button, and hidden collapsed categories.
+- Browser and visual verification: Pending Manual User Verification. No browser or screenshot testing was performed for this task.
