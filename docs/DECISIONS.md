@@ -88,3 +88,10 @@
 - Reuse the existing Masala Dosa and Pani Puri category photographs. Add ten dish-specific local WebP photos with verified Unsplash or Wikimedia Commons licenses. Provide on-page attribution for CC BY-SA 4.0 works, indicate resizing/WebP conversion, and keep source records in `IMAGE_SOURCES.md`.
 - Link cards to existing category routes and offer a single external Order Online action in the favorites section. This keeps ordering functional without suggesting that a card adds an item to a cart or carries a product selection to the provider.
 - Vary the presentation through an image-first sweets grid and a wider favorites layout while retaining the shared card, image frame, spacing, typography, color, and reduced-motion rules.
+
+## Task 4.4
+
+- Keep the brand-story copy tied to the verified Richardson location and the existing sweets, chaat, snacks, and meal categories. Do not invent an ownership story, founding date, cultural lineage, awards, or preparation claims. The owner's Task 4.4 message ended before the detailed story requirements; the section therefore uses conservative editorial language.
+- Treat celebrations as an invitation to ask about current options by phone. The project does not contain owner-confirmed catering packages or event-service details, so the section makes no availability promise and does not build a catering form.
+- Reuse existing licensed Unsplash product photography for story and celebrations, with illustrative captions. No unrelated business imagery or new license obligations were introduced.
+- Reuse `business.ts` for the Richardson address, phone, unknown-hours fallback, and directions URL. A lightweight address card avoids a map embed, third-party script, and unverified geolocation data.

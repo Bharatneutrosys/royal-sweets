@@ -7,7 +7,7 @@
 | 1   | Project architecture | Complete | Next.js App Router foundation, configuration, and documentation. |
 | 2   | Design system        | Complete | Tasks 2.1–2.3 verified.                                          |
 | 3   | Global layout        | Complete | Tasks 3.1–3.4 verified in code; visual review remains.           |
-| 4   | Homepage             | Active   | Tasks 4.1–4.3 complete; Task 4.4 remains pending.                |
+| 4   | Homepage             | Active   | Tasks 4.1–4.3 complete; Task 4.4 awaits the full brief.          |
 | 5   | Product data         | Pending  | Await verified menu information.                                 |
 | 6   | Menu pages           | Pending  |                                                                  |
 | 7   | Product details      | Pending  |                                                                  |
@@ -52,13 +52,15 @@ Task 3.4 reviewed route landmarks, desktop and mobile navigation, footer data an
 - Task 4.1 — Luxury homepage hero and visual storytelling: Complete.
 - Task 4.2 — Category showcase: Complete.
 - Task 4.3 — Featured product showcases: Complete.
-- Task 4.4 — Brand story and catering sections: Pending.
+- Task 4.4 — Brand story, celebrations, and location: In progress; technical implementation verified, remaining brief requested.
 
 Task 4.1 replaced the temporary homepage with a single editorial hero, two working CTA destinations, and one locally optimized, licensed Indian sweets photograph. It added editorial and ingredient standards without publishing item prices, unconfirmed recipes, or a product catalog. No new runtime dependency was installed.
 
 Task 4.2 added six linked, image-rich category cards directly beneath the hero. Their routes and order derive from shared navigation data; editorial copy and six locally optimized illustrative photos have separate source records. Existing menu category pages remain placeholders. No product listings, prices, new dependencies, or client-side interactions were added.
 
 Task 4.3 added six Signature Sweets and six Royal Favorites in two responsive homepage sections. The typed dataset contains the owner-supplied online prices, traditional editorial descriptions, category associations, and image credits. Ten new locally optimized photos were licensed and two category photos reused. The ordering page returned HTTP 403 to a terminal request, so live price verification remains pending and `priceLastVerified` is null. On-page notes tell customers to confirm current prices. Product cards link to existing menu category placeholders; a separate action opens the established ordering site. No cart, product details, popularity claims, or new dependencies were introduced.
+
+Task 4.4's supplied message stopped at “SECTION ONE: OUR STORY &”. A conservative implementation added three homepage sections using menu-based editorial copy, a call-to-ask celebrations invitation, and the confirmed Richardson location. Existing licensed images were reused. The detailed remainder of the brief was requested and is still needed before treating the task or Stage 4 as fully complete.
 
 ## Unresolved decisions
 
@@ -155,3 +157,11 @@ Task 4.3 added six Signature Sweets and six Royal Favorites in two responsive ho
 - Five free Unsplash photos and five CC BY-SA 4.0 Wikimedia Commons photos were checked by terminal metadata/license requests and local image previews. Existing category photos were reused for Masala Dosa and Pani Puri; all source details are in `IMAGE_SOURCES.md`.
 - Code review found responsive one/two/three-column layouts, reserved image frames, focus styling, reduced-motion handling, and no new client component. Product photos use lazy loading below the hero.
 - Browser and visual verification: Pending Manual User Verification. No browser, localhost, screenshot, or automated visual test was used.
+
+### Task 4.4 verification to date
+
+- `npm.cmd run typecheck`, `npm.cmd run lint`, `npm.cmd run format:check`, and `npm.cmd run build`: passed.
+- Generated homepage HTML includes story, celebrations, and visit sections in order after the featured products; it retains one header, one main, one footer, and one H1.
+- Static checks found the confirmed Richardson street address, ZIP code, phone link, unknown-hours fallback, directions URL, and reused image references. No Floyd Circle address or second-business detail was found.
+- Browser and visual verification: Pending Manual User Verification. No browser, localhost, screenshot, or automated visual test was used.
+- Completion remains pending the missing remainder of the owner's Task 4.4 brief.

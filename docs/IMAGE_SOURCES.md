@@ -47,3 +47,7 @@ Selected and checked 2026-10-24 through terminal requests and local previews. Un
 | Mango Lassi      | `public/images/products/mango-lassi.webp`      | [Tasty mango lassi picture](https://commons.wikimedia.org/wiki/File:Tasty_Mango_lassi_picture.JPG) by Nithyasrm                               | CC BY-SA 4.0; attribution and share-alike required | 1100 × 1650; 101,674 bytes |
 
 Masala Dosa reuses `public/images/categories/masala-dosa.webp` by Paul; Pani Puri reuses `public/images/categories/chaat-street-food.webp` by Yashaswita Bhoir. Their original URLs, license, and output details are in the preceding category table. No duplicate files were created. All new product photos were resized to at most 1100px wide and converted to WebP at quality 78. CSS card frames crop the visible image without modifying its local file. Replace stock imagery with approved restaurant photography when available.
+
+## Task 4.4 reuse
+
+The story section reuses the licensed Jalebi and Chole Bhature Unsplash files listed above. The celebrations section reuses the licensed Ladoo Unsplash file. All three are captioned as illustrative; no additional image files were downloaded or attributed to the Richardson restaurant.
