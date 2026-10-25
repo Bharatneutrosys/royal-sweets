@@ -4,8 +4,9 @@ import { Section } from "@/components/shared/Section";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { ButtonLink } from "@/components/ui/Button";
 import { business, mapsDirectionsUrl } from "@/lib/business";
+import type { HomepageSection } from "@/types/menu";
 
-export function VisitSection() {
+export function VisitSection({ content }: { content: HomepageSection }) {
   return (
     <Section aria-labelledby="visit-heading" surface="default">
       <Container className="grid items-center gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1fr)] lg:gap-16">
@@ -13,7 +14,7 @@ export function VisitSection() {
           <SectionHeading
             id="visit-heading"
             eyebrow="Visit Royal Sweets"
-            title="Visit Us in Richardson"
+            title={content.heading}
             description="Visit Royal Sweets & Fast Food on W Belt Line Road in Richardson, Texas."
           />
         </div>

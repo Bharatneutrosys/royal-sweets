@@ -1,5 +1,13 @@
 # Project Progress
 
+## Sprint 2 implementation status (2026-10-24)
+
+The Supabase-backed admin and public integration are implemented in code: eight-table migration with RLS and Storage policies; a repeatable 47-product seed export; SSR authentication and an admin allowlist; protected dashboard; category, product, price, stock, photo, specials, promotions, and homepage management; and database-authoritative public menu/homepage reads when configured. The local catalog remains an explicit public fallback only while Supabase environment variables are absent. Sprint 3 checkout is still pending.
+
+**Activation remains pending:** no Supabase project URL or publishable key is configured in this workspace. The SQL migration, seed, live Auth, RLS, Storage, persistence, password recovery email, and public reflection of edits have not been verified against a real database. Do not call the portal operational or production-ready until the owner completes [ADMIN_SETUP.md](ADMIN_SETUP.md) and the live security checks pass. Browser-based visual testing is **Pending Manual User Verification**. Existing historical sections below document earlier work; their references to a placeholder admin login are superseded by this implementation, subject to activation.
+
+Local checks: `npm run seed:export` generated 17 categories, 47 products, 47 reference prices, and five homepage sections. `npm run validate:menu` passed. `npm run validate:admin` passed four focused tests for cent conversion, Chicago DST rejection, upload signatures, and seed/RLS scaffolding. `npm run typecheck`, `npm run lint`, `npm run format:check`, and `npm run build` passed, including all protected admin route compilation. These checks are static/local and do not establish live RLS or persistence. Known limitations: Supabase credentials and migration application are pending; database/Storage writes are not atomic, so rare upload cleanup failures need manual investigation; large future catalogs will need query pagination. Sprint 2 is **implemented in code, pending live activation and verification**, and Sprint 3 remains pending.
+
 ## Priority reset: consolidated delivery roadmap (2026-10-24)
 
 The earlier numbered stages below remain as a history of completed work. Their unfinished feature sequence is superseded by these four sprints. Stage 4's previous homepage was technically complete at the time; Sprint 1 replaces its long rendered composition with a shorter one. Do not infer that menu, admin, or ordering are complete from those historical entries.

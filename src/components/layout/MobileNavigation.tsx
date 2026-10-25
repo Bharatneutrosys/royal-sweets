@@ -6,16 +6,17 @@ import { usePathname } from "next/navigation";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { ButtonLink } from "@/components/ui/Button";
 import { classNames } from "@/lib/classNames";
-import {
-  isNavigationActive,
-  menuCategories,
-  siteLinks,
-} from "@/lib/siteNavigation";
+import { isNavigationActive, siteLinks } from "@/lib/siteNavigation";
+import type { MenuNavigationItem } from "@/lib/siteNavigation";
 
 const drawerId = "mobile-navigation-dialog";
 const categoryListId = "mobile-menu-categories";
 
-export function MobileNavigation() {
+export function MobileNavigation({
+  menuCategories,
+}: {
+  menuCategories: MenuNavigationItem[];
+}) {
   const pathname = usePathname();
   const dialogRef = useRef<HTMLDialogElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);

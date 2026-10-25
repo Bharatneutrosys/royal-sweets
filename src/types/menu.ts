@@ -1,12 +1,6 @@
-export type PriceUnit =
-  | "piece"
-  | "half-pound"
-  | "pound"
-  | "two-pounds"
-  | "plate"
-  | "pack"
-  | "box"
-  | null;
+export type KnownPriceUnit =
+  "piece" | "half-pound" | "pound" | "two-pounds" | "plate" | "pack" | "box";
+export type PriceUnit = KnownPriceUnit | (string & {}) | null;
 
 export type Category = {
   id: string;
@@ -14,6 +8,7 @@ export type Category = {
   slug: string;
   description: string;
   image: string | null;
+  imageAlt?: string | null;
   parentId: string | null;
   displayOrder: number;
   isActive: boolean;
@@ -26,6 +21,7 @@ export type PriceOption = {
   unit: PriceUnit;
   quantity: number | null;
   priceCents: number;
+  priceKind: "reference" | "direct";
   isActive: boolean;
 };
 
@@ -57,8 +53,11 @@ export type HomepageSection = {
   id: string;
   type: "hero" | "categories" | "specials" | "offers" | "visit";
   heading: string;
+  eyebrow?: string | null;
+  subheading?: string | null;
   description: string | null;
   image: string | null;
+  imageAlt?: string | null;
   isVisible: boolean;
   displayOrder: number;
   startAt: string | null;
@@ -70,6 +69,7 @@ export type Promotion = {
   title: string;
   description: string;
   image: string | null;
+  imageAlt?: string | null;
   discount: { kind: "percent" | "amount"; value: number } | null;
   startAt: string | null;
   endAt: string | null;

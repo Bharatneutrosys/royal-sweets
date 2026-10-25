@@ -3,7 +3,7 @@ import { MapPin, Phone } from "lucide-react";
 import { BrandLogo } from "@/components/layout/BrandLogo";
 import { Container } from "@/components/shared/Container";
 import { business, mapsDirectionsUrl } from "@/lib/business";
-import { menuCategories, siteLinks } from "@/lib/siteNavigation";
+import { siteLinks, type MenuNavigationItem } from "@/lib/siteNavigation";
 
 const informationLinks = siteLinks
   .filter(
@@ -15,7 +15,11 @@ const informationLinks = siteLinks
 const footerLinkClasses =
   "inline-flex min-h-11 items-center rounded-control text-sm leading-snug text-on-primary/85 no-underline transition-colors duration-[var(--duration-fast)] hover:text-on-primary";
 
-export function SiteFooter() {
+export function SiteFooter({
+  menuCategories,
+}: {
+  menuCategories: MenuNavigationItem[];
+}) {
   return (
     <footer className="site-footer bg-primary text-on-primary">
       <Container>

@@ -3,6 +3,7 @@ import { Manrope, Playfair_Display } from "next/font/google";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import "./globals.css";
+import { getMenuNavigation } from "@/lib/supabase/navigation";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -22,9 +23,10 @@ export const metadata: Metadata = {
     "Authentic Indian Sweets, Chaat & Fast Food in Richardson, Texas.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  const navigationCategories = await getMenuNavigation();
   return (
     <html lang="en">
       <body
@@ -36,9 +38,9 @@ export default function RootLayout({
         >
           Skip to content
         </a>
-        <SiteHeader />
+        <SiteHeader menuCategories={navigationCategories} />
         <div className="site-content flex flex-1 flex-col">{children}</div>
-        <SiteFooter />
+        <SiteFooter menuCategories={navigationCategories} />
       </body>
     </html>
   );

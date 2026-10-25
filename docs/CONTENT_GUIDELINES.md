@@ -1,5 +1,9 @@
 # Content Guidelines
 
+## Sprint 2 editorial controls
+
+The initial 47 imported prices remain externally sourced **reference** amounts with unconfirmed direct-selling units and stock. Admin-entered `direct` price options must be approved by the restaurant before publication. Product images uploaded by an administrator require meaningful alt text and a recorded rights/creator note in [IMAGE_SOURCES.md](IMAGE_SOURCES.md) if they are not restaurant-owned. Promotions and specials must use verified terms; discount metadata is not applied to purchases. General traditional food descriptions do not establish this restaurant's exact recipe, ingredients, allergens, or availability.
+
 ## Current menu publication policy — consolidated Sprint 1
 
 The 47 items and prices in `src/lib/menuCatalog.ts` are an owner-provided snapshot of an externally published ordering listing, received 2026-10-24. The provider URL is retained only for internal provenance. It is no longer a customer ordering destination. Direct HTTP access previously returned 403, so current listing prices were not independently reverified. All menu cards say **Reference menu price** and ask customers to call to confirm current price, unit, and availability. Direct website selling prices are not configured.

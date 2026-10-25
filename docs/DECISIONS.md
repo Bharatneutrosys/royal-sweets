@@ -1,5 +1,15 @@
 # Decisions
 
+## Sprint 2 implementation decisions (2026-10-24)
+
+- Use Supabase PostgreSQL/Auth/Storage through `@supabase/ssr` and the publishable key; no service-role key is needed in the application. Verify Auth claims on the server, then query the database-owned admin allowlist. Every mutation repeats that check, and RLS remains the final enforcement boundary. The first admin is created only through Auth plus an explicit database-owner SQL insert.
+- Keep the 47-item local catalog solely as an unconfigured-development fallback and as the source for a deliberate, conflict-safe SQL seed. Once configured, public pages read the database only. Do not reseed at startup or overwrite owner edits on deploy.
+- Keep category slugs and parent assignment stable after creation. Mutable names, descriptions, visibility, order, and images meet ordinary management needs without breaking established URLs or existing product relationships. Moving a category between levels requires an explicit migration later.
+- Keep public reference prices distinct from admin-entered direct prices and leave unknown units nullable. Stock uncertainty remains `unknown`; hide and out-of-stock are different states. No cart or checkout action is exposed.
+- Use one private Storage bucket and signed read URLs, so unreleased images cannot be fetched merely by knowing a path. Require admin roles in Storage RLS and validate file type/size/signature in server actions. Cleanup is best-effort across Storage and Postgres.
+- Use native `Intl` for America/Chicago schedule entry rather than another date dependency. Reject daylight-saving gap/overlap times rather than silently choosing an unintended instant.
+- Do not mark Sprint 2 operational before a real Supabase project has applied the migration, seed, allowlist, Storage policies, authentication email flow, and live authorization tests. Browser visual review also remains with the owner.
+
 ## Priority reset, consolidated Sprint 1 (2026-10-24)
 
 - Replace the long Stage 4 homepage composition with the owner-supplied 25+ year heritage message, a compact category discovery, optional hidden specials/offers, and Richardson visit details. Preserve licensed assets and earlier components where useful; remove the duplicate twelve-item homepage seed rather than maintain two catalogs.

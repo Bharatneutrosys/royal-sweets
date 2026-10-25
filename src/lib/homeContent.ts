@@ -6,8 +6,13 @@ export const homepageSections: HomepageSection[] = [
     id: "heritage-hero",
     type: "hero",
     heading: "A Tradition of Taste. A Legacy of Quality.",
-    description: null,
+    eyebrow: "Proudly serving Richardson & DFW for over 25 years",
+    subheading:
+      "For over 25 years, Royal Sweets & Fast Food has been part of the Richardson and Dallas–Fort Worth community, bringing the richness of Indian sweets and the flavors of traditional Indian cuisine to the table.",
+    description:
+      "From festive mithai to savory favorites, our commitment to quality and memorable flavor remains at the heart of everything we serve.",
     image: "/images/hero/indian-mithai-assortment.webp",
+    imageAlt: "Assorted traditional Indian sweets arranged on a brass platter",
     isVisible: true,
     displayOrder: 1,
     startAt: null,

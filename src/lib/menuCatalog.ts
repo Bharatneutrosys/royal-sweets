@@ -298,6 +298,7 @@ export const products: Product[] = seedGroups.flatMap(
             unit: null,
             quantity: null,
             priceCents,
+            priceKind: "reference",
             isActive: true,
           },
         ],

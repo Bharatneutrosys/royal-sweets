@@ -17,6 +17,12 @@ export const menuCategories = [
   })),
 ];
 
+export type MenuNavigationItem = {
+  label: string;
+  href: string;
+  slug: string | null;
+};
+
 export function isNavigationActive(pathname: string, href: string) {
   return href === "/"
     ? pathname === "/"

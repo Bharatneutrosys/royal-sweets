@@ -2,8 +2,7 @@ import Link from "next/link";
 import { Search } from "lucide-react";
 import { Container } from "@/components/shared/Container";
 import { MediaFrame } from "@/components/ui/MediaFrame";
-import { filterProducts } from "@/lib/menuCatalog";
-import { primaryCategories, subcategoriesFor } from "@/lib/menuCategories";
+import type { PublicCatalog } from "@/lib/supabase/catalog";
 import type { Product } from "@/types/menu";
 
 const currency = new Intl.NumberFormat("en-US", {
@@ -39,7 +38,7 @@ const commonsCredits = [
 ];
 
 function MenuCard({ product }: { product: Product }) {
-  const price = product.priceOptions.find((option) => option.isActive);
+  const prices = product.priceOptions.filter((option) => option.isActive);
   return (
     <article className="surface-panel flex h-full min-w-0 flex-col overflow-hidden">
       {product.image && product.imageAlt ? (
@@ -71,16 +70,33 @@ function MenuCard({ product }: { product: Product }) {
         </p>
         <div className="mt-5 flex flex-wrap items-end justify-between gap-2 border-t border-border pt-4">
           <div>
-            <span className="block text-xs text-muted">
-              Reference menu price
-            </span>
-            <span className="font-body text-price font-bold text-foreground">
-              {price
-                ? currency.format(price.priceCents / 100)
-                : "Ask for price"}
-            </span>
+            {prices.length ? (
+              prices.map((price) => (
+                <div key={price.id} className="mb-1">
+                  <span className="block text-xs text-muted">
+                    {price.priceKind === "reference"
+                      ? "Reference menu price"
+                      : price.label}
+                  </span>
+                  <span className="font-body text-price font-bold text-foreground">
+                    {currency.format(price.priceCents / 100)}
+                    {price.unit ? ` / ${price.unit}` : ""}
+                  </span>
+                </div>
+              ))
+            ) : (
+              <span className="text-sm text-muted">Ask for price</span>
+            )}
           </div>
-          <span className="text-xs text-muted">Call for availability</span>
+          <span
+            className={`text-xs ${product.stockStatus === "out-of-stock" ? "font-bold text-error" : "text-muted"}`}
+          >
+            {product.stockStatus === "out-of-stock"
+              ? "Temporarily out of stock"
+              : product.stockStatus === "available"
+                ? "Available"
+                : "Call for availability"}
+          </span>
         </div>
       </div>
     </article>
@@ -88,16 +104,25 @@ function MenuCard({ product }: { product: Product }) {
 }
 
 type MenuPageContentProps = {
+  catalog: PublicCatalog;
   categoryId?: string;
   subcategory?: string;
   query?: string;
 };
 
 export function MenuPageContent({
+  catalog,
   categoryId,
   subcategory,
   query,
 }: MenuPageContentProps) {
+  const primaryCategories = catalog.categories
+    .filter((item) => item.parentId === null && item.isActive)
+    .sort((a, b) => a.displayOrder - b.displayOrder);
+  const subcategoriesFor = (id: string) =>
+    catalog.categories
+      .filter((item) => item.parentId === id && item.isActive)
+      .sort((a, b) => a.displayOrder - b.displayOrder);
   const category = categoryId
     ? primaryCategories.find((item) => item.id === categoryId)
     : undefined;
@@ -106,7 +131,15 @@ export function MenuPageContent({
     subcategoriesFor(category.id).some((item) => item.id === subcategory)
       ? subcategory
       : undefined;
-  const matching = filterProducts(category?.id, validSubcategory, query);
+  const normalizedQuery = query?.trim().toLocaleLowerCase("en-US") ?? "";
+  const matching = catalog.products.filter(
+    (item) =>
+      item.isPublished &&
+      (!category || item.categoryId === category.id) &&
+      (!validSubcategory || item.subcategoryId === validSubcategory) &&
+      (!normalizedQuery ||
+        item.name.toLocaleLowerCase("en-US").includes(normalizedQuery)),
+  );
   const searchAction = category ? `/menu/${category.slug}` : "/menu";
   const groups = category ? [category] : primaryCategories;
 
@@ -125,10 +158,9 @@ export function MenuPageContent({
               "Browse traditional sweets, Indian food, chaat, snacks, and drinks."}
           </p>
           <p className="mt-4 max-w-3xl text-sm text-muted">
-            Prices below are an externally published reference snapshot, not
-            confirmed website selling prices. Units and availability are
-            unverified; please call for current details. Images are
-            illustrative.
+            Reference prices originated from an external listing and are not
+            confirmed website selling prices. Please call for current details.
+            Images are illustrative.
           </p>
         </Container>
       </div>
@@ -248,7 +280,10 @@ export function MenuPageContent({
                       </Link>
                     )}
                   </div>
-                  {subcategoriesFor(group.id).map((subgroup) => {
+                  {[
+                    ...subcategoriesFor(group.id),
+                    { id: "", name: "Other", slug: "other" },
+                  ].map((subgroup) => {
                     const items = groupItems.filter(
                       (product) => product.subcategoryId === subgroup.id,
                     );

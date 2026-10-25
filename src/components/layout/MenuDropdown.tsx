@@ -5,14 +5,19 @@ import Link from "next/link";
 import { ChevronDown } from "lucide-react";
 import { navigationItemClasses } from "@/components/layout/navigationStyles";
 import { classNames } from "@/lib/classNames";
-import { menuCategories } from "@/lib/siteNavigation";
+import type { MenuNavigationItem } from "@/lib/siteNavigation";
 
 type MenuDropdownProps = {
   active: boolean;
   pathname: string;
+  menuCategories: MenuNavigationItem[];
 };
 
-export function MenuDropdown({ active, pathname }: MenuDropdownProps) {
+export function MenuDropdown({
+  active,
+  pathname,
+  menuCategories,
+}: MenuDropdownProps) {
   const detailsRef = useRef<HTMLDetailsElement>(null);
   const summaryRef = useRef<HTMLElement>(null);
   const [open, setOpen] = useState(false);

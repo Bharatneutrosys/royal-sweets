@@ -4,9 +4,17 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { MenuDropdown } from "@/components/layout/MenuDropdown";
 import { navigationItemClasses } from "@/components/layout/navigationStyles";
-import { isNavigationActive, siteLinks } from "@/lib/siteNavigation";
+import {
+  isNavigationActive,
+  siteLinks,
+  type MenuNavigationItem,
+} from "@/lib/siteNavigation";
 
-export function DesktopNavigation() {
+export function DesktopNavigation({
+  menuCategories,
+}: {
+  menuCategories: MenuNavigationItem[];
+}) {
   const pathname = usePathname();
 
   return (
@@ -17,7 +25,12 @@ export function DesktopNavigation() {
 
           if (href === "/menu") {
             return (
-              <MenuDropdown key={href} active={active} pathname={pathname} />
+              <MenuDropdown
+                key={href}
+                active={active}
+                pathname={pathname}
+                menuCategories={menuCategories}
+              />
             );
           }
 

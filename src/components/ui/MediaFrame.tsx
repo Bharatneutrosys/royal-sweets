@@ -46,6 +46,7 @@ export function MediaFrame({
           aria-hidden={decorative || undefined}
           fill
           sizes={sizes}
+          unoptimized={typeof src === "string" && src.startsWith("https://")}
           className={fit === "contain" ? "object-contain" : "object-cover"}
         />
       ) : (
